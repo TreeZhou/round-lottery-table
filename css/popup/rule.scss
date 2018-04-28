@@ -1,0 +1,51 @@
+.rule {
+    &__commom-box {
+        @include abs_width_center(88%);
+        top: 18%;
+        height: 60%;
+        .rule__commom-text-box {
+            height: 100%;
+            overflow: scroll;
+            -webkit-overflow-scrolling: touch; //安卓专有属性
+            t1 {
+                // border:1px ;
+                padding: 2px 0px 2px 4px;
+                background-color: $theme-color;
+                border-radius: 5px;
+                color: white;
+                font-size: .8rem;
+            }
+            p {
+                font-size: .7rem;
+            }
+        }
+        &:after {
+            position: absolute;
+            content: ""; // background-color: green;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15%; // box-shadow: 0px -1px 15px 2px red inset;
+            user-select: none;
+            background: -webkit-gradient(linear, 0 0, 0 bottom, from(#f7f4f400), to(#ffffff8f));
+            z-index: 1;
+        }
+    }
+    &__btn-sure {
+        @include abs_width_center(80%);
+        bottom: 2%;
+        box-sizing: border-box;
+        background-color: #f44341;
+        border-radius: 100px;
+        padding: 4%;
+        margin: 3% 0 5%;
+        box-shadow: 2px -2px 5px #2f302f62 inset;
+        color: white;
+        font-size: .9rem;
+        text-align: center;
+    }
+    &__see-more {
+        @include abs_width_center(35%);
+        bottom: 125%;
+    }
+}

@@ -1,0 +1,53 @@
+.hobby {
+    &__item-box {
+        @include display_flex(column);
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 30px 15px 20px;
+    }
+    .item-box__item {
+        margin: 10px 0;
+    }
+    &__title {
+        width: 100%;
+        color: #f44341;
+    }
+    &__options {
+        font-size: .9rem; // text-align: center;
+        span {
+            display: inline-block;
+            border: 2px #f44341 solid;
+            background-color: #fff;
+            border-radius: 7px;
+            padding: 5px 7px;
+            margin: 5px 0;
+            color: #f44341;
+        }
+        .hobby__hobby-active {
+            color: white;
+            background-color: #f44341;
+        }
+    }
+    &__btn-sure {
+        color: white;
+        font-size: .9rem;
+        background-color: #f44341;
+        width: 40%;
+        border-radius: 100px;
+        text-align: center;
+        padding: 3%;
+        margin: 8% 0 5%;
+        box-shadow: 2px -2px 5px #2f302f62 inset;
+    }
+    &__btn-close {
+        position: absolute;
+        top: 0%;
+        right: 1%;
+        width: 6%;
+        padding: 15px;
+        img {
+            width: 100%;
+        }
+    }
+}
+

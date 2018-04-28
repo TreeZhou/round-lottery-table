@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<base href="http://weijie.91iot.net/CDN路径/">-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <title>项目标题</title>
+</head>
+
+<body>
+    <!--页面主体-->
+    <div class="main scrollable">
+        <!--进入页面-->
+        <div class="page regist">
+            <div class="container">
+                <img src="./resources/img/regist__bg.jpg" class="regist__bg">
+                <div class="click_for_img-btn regist__btn-regist btn-has-active">
+                    <img src="./resources/img/regist__btn-regist.png">
+                </div>
+            </div>
+        </div>
+        <!--进入页面-->
+
+        <!-- 进入页面-->
+        <div class="page regist-info">
+            <div class="container">
+                <img src="./resources/img/regist-info__bg.jpg" class="regist-info__bg">
+                <div class="regist-info__item-box">
+                    <div class="item-box__item item-box__item-hobby click_for_img-btn">
+                        <img src="./resources/img/icon-hobby.png">
+                    </div>
+                    <div class="item-box__item click_for_img-btn click_for_img-btn">
+                        <img src="./resources/img/icon-kid.png">
+                    </div>
+                    <div class="item-box__item item-box__item-iphone">
+                        <img src="./resources/img/icon-iphone.png">
+                        <input type="number" class="item-box__input-iphone" placeholder="请输入手机号码">
+                    </div>
+                    <div class="item-box__item item-box__item-code">
+                        <img src="./resources/img/icon-code.png">
+                        <input type="number" class="item-box__input-code" placeholder="请输入验证码">
+                        <div class="item-box__btn-send-code click_for_img-btn">
+                            <img src="./resources/img/btn-send-code.png">
+                        </div>
+                    </div>
+                    <div class="item-box__btn-submit btn-has-active">
+                        <span>提交抽大奖</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--进入页面 -->
+
+        <!--普通页面-->
+        <div class="page home">
+            <div class="container">
+                <img src="./resources/img/home_bg.jpg" class="home__bg" /> 
+                <div class="home__lottery-box">
+                        <!-- <img src="resources/img/turntable-content.png"  /> -->
+                    <img src="resources/img/turntable-content.png" class="turntable-content" />
+                    <img src="resources/img/turntable-start.png" class="turntable-start" />
+                </div>
+            </div>
+        </div>
+        <!--普通页面-->
+        <!--关注弹窗-->
+        <div class="popup subscribe">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap">
+                    <img src="./resources/img/commom_bg-short.png" class="wrap__bg">
+                    <img src="./resources/img/subscribe__person.png" class="subscribe__person">
+                    <img src="./resources/img/qrcode.png" class="subscribe__qrcode">
+                    <div class="subscribe__commom-text-box">
+                        <p>长按识别二维码</p>
+                        <p>加入立乐家</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--关注弹窗-->
+        <!--选择爱好弹窗-->
+        <div class="popup hobby">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap hobby__item-box">
+                    <div class="hobby__title item-box__item">您的喜好:</div>
+                    <div class="hobby__options item-box__item">
+                        <span>旅游</span>
+                        <span>美食</span>
+                        <span>运动健身</span>
+                        <span>影视娱乐</span>
+                        <span>艺术与音乐</span>
+                        <span>育儿及亲子</span>
+                        <span>时尚、美容美妆</span>
+                        <span class="hobby__hobby-active">阅读</span>
+                        <span>游戏</span>
+                        <span>写生摄影</span>
+                        <span>理财</span>
+                        <span>园艺、茶艺、插花等休闲娱乐</span>
+                    </div>
+                    <div class="hobby__btn-sure item-box__item">
+                        <span>确定</span>
+                    </div>
+                    <div class="hobby__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-close.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--选择爱好弹窗-->
+        <!--选择小孩弹窗-->
+        <div class="popup kid">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap kid__item-box">
+                    <div class="kid__title item-box__item">您的小孩:</div>
+                    <div class="kid__options item-box__item">
+                        <span>没有小孩</span>
+                        <span>1岁</span>
+                        <span>2岁</span>
+                        <span>3岁</span>
+                        <span>4岁</span>
+                        <span>5岁</span>
+                        <span class="kid__kid-active">6岁</span>
+                        <span>7岁以上</span>
+                    </div>
+                    <div class="kid__btn-sure item-box__item">
+                        <span>确定</span>
+                    </div>
+                    <div class="kid__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-close.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--选择小孩弹窗-->
+        <!--系统升级弹窗-->
+        <div class="popup notice-upgrade">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap notice-upgrade__item-box">
+                    <p class="notice-upgrade__text--1"> 系统升级提示</p>
+                    <p class="notice-upgrade__text--2">您好，十分感谢您对我们活动的支持，目前完善资料抽奖活动火热进行中，为更好回馈我们的新老会员，我们将于7月29日18:00～次日10:00之间进行系统升级，以便大家抽中的奖品更快到达大家账户，敬请期待哦。对此造成大家的不便，深表歉意。</p>
+                    <p class="notice-upgrade__text--3">期待明日您可以抽到迪士尼大奖哦</p>
+                    <div class="notice-upgrade__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--系统升级弹窗-->
+        <!--活动结束弹窗-->
+        <div class="popup notice-act-end">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap notice-act-end__item-box">
+                    <p class="notice-act-end__text--1"> 活动结束提醒</p>
+                    <p class="notice-act-end__text--2">亲，请尽快到立乐家完善会员资料，</br> 抽中的奖品才能更快到您手里哦~ </br>本次活动将于8月4日18:00正式结束，</br> 想要了解更多福利，</br> 请持续关注立乐家，么么哒！
+                    </p>
+                    <div class="notice-act-end__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--活动结束弹窗-->
+        <!--迪士尼奖品页面-->
+        <div class="popup desney">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap awara-popup">
+                    <img src="resources/img/award_bg.png" class="wrap__bg" />
+                    <img src="resources/img/photo-desney--popup.png" class="desney__prizeimg" />
+                    <div class="desney__btn-sure">
+                        <div class="desney__btn-text--jump-url">
+                            <span>*关注立乐家回复迪士尼大奖</br>
+                                立乐家客服电话：
+                                <a href="tel:020-81808822">020-81808822</a>
+                            </span>
+                        </div>
+                        <span>再来一次</span>
+                    </div>
+                    <div class="desney__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--迪士尼奖品页面-->
+        <!--同城奖品页面-->
+        <div class="popup same-city">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap awara-popup">
+                    <img src="resources/img/award_bg.png" class="wrap__bg" />
+                    <img src="resources/img/photo-panda--popup.png" class="same-city__prizeimg" />
+                    <div class="same-city__btn-sure">
+                        <div class="same-city__btn-text--jump-url">
+                            <span>戳我填写信息</span>
+                        </div>
+                        <span>再来一次</span>
+                    </div>
+                    <div class="same-city__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--同城奖品页面-->
+        <!--牙膏奖品页面-->
+        <div class="popup toothpaste">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap awara-popup">
+                    <img src="resources/img/award_bg.png" class="wrap__bg" />
+                    <img src="resources/img/photo-toothpaste--popup.png" class="toothpaste__prizeimg" />
+                    <div class="toothpaste__btn-sure">
+                        <div class="toothpaste__btn-text--jump-url">
+                            <span>戳我填写信息</span>
+                        </div>
+                        <span>再来一次</span>
+                    </div>
+                    <div class="toothpaste__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--牙膏奖品页面-->
+        <!--红包奖品页面-->
+        <div class="popup redpack">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap awara-popup">
+                    <img src="resources/img/award_bg.png" class="wrap__bg" />
+                    <img src="resources/img/photo-redpack--popup.png" class="redpack__prizeimg" />
+                    <div class="redpack__btn-sure">
+                        <div class="redpack__btn-text--jump-url">
+                            <p class="redpack__commom-text--amount">恭喜你抽中
+                                <span class="award-amount">X元红包</span>哦！
+                            </p>
+                            <span class="redpack__commom-text">撒花！幸福红包已火速发出，
+                                </br> 回到立乐家公众号即可领取。
+                            </span>
+                        </div>
+                        <span>再来一次</span>
+                    </div>
+                    <div class="redpack__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--红包奖品页面-->
+        <!--积分100奖品页面-->
+        <div class="popup jifen100">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap awara-popup">
+                    <img src="resources/img/award_bg.png" class="wrap__bg" />
+                    <img src="resources/img/photo-jifen100--popup.png" class="jifen100__prizeimg" />
+                    <div class="jifen100__btn-sure">
+                        <div class="jifen100__btn-text--jump-url">
+                            <span>戳我直接去兑换</span>
+                        </div>
+                        <span>再来一次</span>
+                    </div>
+                    <div class="jifen100__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--积分100奖品页面-->
+        <!--积分50奖品页面-->
+        <div class="popup jifen50">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap awara-popup">
+                    <img src="resources/img/award_bg.png" class="wrap__bg" />
+                    <img src="resources/img/photo-jifen50--popup.png" class="jifen50__prizeimg" />
+                    <div class="jifen50__btn-sure">
+                        <div class="jifen50__btn-text--jump-url">
+                            <span>戳我直接去兑换</span>
+                        </div>
+                        <span>再来一次</span>
+                    </div>
+                    <div class="jifen50__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--积分50奖品页面-->
+        <!--积分20奖品页面-->
+        <div class="popup jifen20">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap awara-popup">
+                    <img src="resources/img/award_bg.png" class="wrap__bg" />
+                    <img src="resources/img/photo-jifen20--popup.png" class="jifen20__prizeimg" />
+                    <div class="jifen20__btn-sure">
+                        <div class="jifen20__btn-text--jump-url">
+                            <span>戳我直接去兑换</span>
+                        </div>
+                        <span>再来一次</span>
+                    </div>
+                    <div class="jifen20__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--积分20奖品页面-->
+
+        <!--填写信息-->
+        <div class="toothpaste-addressInfo popup">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap">
+                    <img src="resources/img/commom_bg-long.png" class="wrap__bg" />
+                    <img src="resources/img/photo-toothpaste.png" class="toothpaste-addressInfo__title-photo" />
+                    <div class="toothpaste-addressInfo__item-box ">
+                        <p class='item-box__item-tip item-box__item'>我们将于近期内安排配送，请填写准确的收货信息</p>
+                        <div class="item-box__item-input-box item-box__item">
+                            <input type="text" class="item-box__input" id="name" placeholder="请输入联系人姓名"></input>
+                        </div>
+                        <div class="item-box__item-input-box item-box__item">
+                            <input type="text" class="item-box__input" id="phonenumber" placeholder="请输入联系人手机"></input>
+                        </div>
+                        <div class="item-box__item-input-box item-box__item">
+                            <input type="text" class="item-box__input" id="address" placeholder="请输入收获地址"></input>
+                        </div>
+                        <div class="toothpaste-addressInfo__btn-sure item-box__item">
+                            <span>提交信息</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--填写信息-->
+        <!--关注弹窗-->
+        <div class="popup desney--myaward-list">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap">
+                    <img src="./resources/img/commom_bg-short.png" class="wrap__bg">
+                    <img src="./resources/img/subscribe__person.png" class="subscribe__person">
+                    <img src="./resources/img/qrcode.png" class="subscribe__qrcode">
+                    <div class="subscribe__commom-text-box">
+                        <p>长按识别二维码加入立乐家
+                        </p>
+                        <p>*关注立乐家回复迪士尼大奖</p>
+                        <p>客服电话
+                            <a href="tel:020-81808822"> 020-81808822</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--关注弹窗-->
+
+        <!--分享3个好友提示弹窗-->
+        <div class="popup share-three">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap">
+                    <img src="./resources/img/commom_bg-middle.png" class="wrap__bg">
+                    <img src="./resources/img/icon-share-three-person.png" class="share-three__person">
+                    <div class="share-three__commom-text-box">
+                        <p>考验真爱的时候到了，
+                        </p>
+                        <p>告诉小伙伴，每三人成功参与即可再得一次抽奖机会哦</p>
+                    </div>
+                    <div class="share-three__btn-sure item-box__item">
+                        <span>确定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--分享3个好友提示弹窗-->
+        <!--分享成功提示弹窗-->
+        <div class="popup share-suc">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap cover">
+                    <img src="./resources/img/share-suc_bg.png" class="wrap__bg">
+                    <div class="share-suc__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--分享成功提示弹窗-->
+        <!--抽奖受限提示弹窗-->
+        <div class="popup limit-share">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap">
+                    <img src="./resources/img/commom_bg-middle.png" class="wrap__bg">
+                    <img src="./resources/img/icon-limit-share.png" class="limit-share__person">
+                    <div class="limit-share__commom-text-box">
+                        <p>很抱歉，您今日的抽奖次数已耗尽，
+                        </p>
+                        <p>感谢您的积极参与，请明日再来哦~</p>
+                    </div>
+                    <div class="limit-share__btn-close click_for_img-btn btn-has-active">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--抽奖受限提示弹窗-->
+        <!--分享弹窗-->
+        <div class="popup share">
+            <div class="mask"></div>
+            <div class="box">
+                <!-- <div class="wrap"> -->
+                <img class="icon-share--share-page" src="./resources/img/icon-share--share-page.png">
+                <!-- </div> -->
+            </div>
+        </div>
+        <!--分享弹窗-->
+
+        <!--规则弹窗-->
+        <div class="popup rule">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap">
+                    <img src="./resources/img/rule_bg.png" class="wrap__bg">
+                    <div class="rule__commom-box">
+                        <div class="rule__commom-text-box">
+                            <t1>活动时间：</t1>
+                            <p>2018年5月4号~8月31号
+                            </p>
+                            <t1>参与方式:</t1>
+                            <div>
+                                <p>1、完善会员信息即可获得一次抽奖机会；</p>
+                                <p>2、成功告知三个好友成为会员，即可获得一次抽奖机会；</p>
+                                <p>3、好友只可被邀请一次，取关再关注者或之前被邀请者无效；</p>
+                                <p>4、每人每天最多邀请30个好友，抽十次奖。</p>
+                            </div>
+                            <t1>奖品说明：</t1>
+                            <div>
+                                <p>1、现金红包为随机金额，用户中奖后由立乐家公众号派发；</p>
+                                <p>2、本次活动积分奖品为立乐家会员专属权益，注册立乐家会员即可使用；</p>
+                                <p>3、实物奖品的配送将在十个工作日内安排；</p>
+                                <p>4、迪士尼大奖及同城活动，客服将通过电话、短信等形式与您进行确认，请填写真实联系电话。</p>
+                            </div>
+
+                            <t1>注意事项：</t1>
+                            <div>
+                                <p>1、禁止任何不正当手段及舞弊行为参与活动，一经发现将取消其获奖资质；</p>
+                                <p>2、有任何疑问，请联系立乐家客服：
+                                    <a href="tel:020-81808822">020-81808822</a>。</p>
+                            </div>
+                            <t1>红包答疑: </t1>
+                            <div>
+                                <p>如遇红包发放失败情况，请检查是否存在以下问题：</p>
+                                <p>1、微信号未绑定银行卡或手机号码；</p>
+                                <p>2、微信号活跃度低或被误认为僵尸号，请按照流程在微信子菜单栏“我”-“设置”-“关于微信”-“帮助与反馈”-“更多问题”-“其他问题”页反馈红包问题。</p>
+                            </div>
+                            <p class="description">发放失败的红包将于活动后一周时间内安排补发。为避免再次派发失败，请相关用户及时解决上述存在的问题，保持关注公众号并耐心等待。
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="rule__btn-sure item-box__item">
+                        <img src="./resources/img/see-more.png" class="rule__see-more">
+                        <span>确定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--规则弹窗-->
+
+        <!--同城奖品填写弹窗-->
+        <div class="popup same-city-info">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap">
+                    <img src="./resources/img/same-city-info_bg.png" class="wrap__bg">
+                    <div class="same-city-info__item-box">
+                        <div class="same-city-info__item">
+                            <img src="./resources/img/same-city_option1.png" class="same-city_option1">
+                            <img src="./resources/img/same-city_option1--act.png" class="same-city_option1 option-act">
+                        </div>
+                        <div class="same-city-info__item">
+                            <img src="./resources/img/same-city_option2.png" class="same-city_option2">
+                            <img src="./resources/img/same-city_option2--act.png" class="same-city_option2 option-act">
+                        </div>
+                        <div class="same-city-info__item">
+                            <img src="./resources/img/same-city_option3.png" class="same-city_option3">
+                            <img src="./resources/img/same-city_option3--act.png" class="same-city_option3 option-act">
+                        </div>
+                        <div class="same-city-info__item">
+                            <img src="./resources/img/same-city_option4.png" class="same-city_option4">
+                            <img src="./resources/img/same-city_option4--act.png" class="same-city_option4 option-act">
+                        </div>
+                    </div>
+                    <div class="same-city-info__input-box">
+                        <img src="./resources/img/same-city_input-border.png" class="wrap__bg">
+                        <input type="text" class="same-city-info__input" placeholder="请留下手机号码，方便我们与您联系">
+                    </div>
+                    <div class="same-city-info__btn-sure item-box__item">
+                        <span>确定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--同城奖品填写弹窗-->
+
+        <!--弹窗页面模板-->
+        <!-- <div class="popup rule">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap">
+                </div>
+            </div>
+        </div> -->
+
+    </div>
+    <!--加载提示-->
+    <div class="loading">
+        <!--<img src="resources/img/page_bg.jpg" class="loading__bg">-->
+        <img src="resources/img/loading.svg" class="loading__logo">
+        <div class="loading__progress">
+            <div class="loading__progress-wrap">
+                <div class="loading__progress-wrap-bar"></div>
+            </div>
+            <div class="loading__progress-tip-text">大脑已启动
+                <span class="loading__progress-tip-text-num">0%</span>...</div>
+        </div>
+    </div>
+    <!--初始加载提示页结束-->
+</body>
+<!--<script src="resources/lib/vconsole.min.js" charset="utf-8"></script>-->
+<script id="fiboDataSDK" src="https://res.fibodata.com/data/fibosdk.min.js" charset="utf-8"></script>
+<script src="resources/lib/jquery-3.1.1.min.js" charset="utf-8"></script>
+<script src="resources/lib/touch.js" charset="utf-8"></script>
+<script src="resources/lib/ejs.min.js" charset="utf-8"></script>
+<script src="resources/lib/observer.js" charset="utf-8"></script>
+<script src="resources/lib/jweixin-1.2.0.js" charset="utf-8"></script>
+<script src="http://weijie.91iot.net/new-open-service/libs/wechat.js" charset="utf-8"></script>
+<script src="./resources/lib/jQueryRotate.2.2.js"></script>
+
+<!--<script src="resources/lib/raven.min.js"></script>-->
+<script>
+    // 初始化 Sentry
+    // try {
+    //     Raven.config('https://f916bfd480cd454fb30f6367b5b8465c@sentry.szzbmy.com/78').install()
+    // }catch(e){}
+    // 初始化VConsole
+    // try {
+    //     new VConsole();
+    // }catch(e){}
+</script>
+<script>
+    // 设置 ajax 请求可以带上 cookie
+    // $.ajaxSetup({
+    //     xhrFields: {
+    //         withCredentials: true
+    //     }
+    // });
+    window._config = {
+        debug: true,
+        ratio: 640 / 1008,
+        winWidth: window.innerWidth,
+        winHeight: window.innerHeight,
+        // 中北的APPID：wx60967b2ee8cdc51b
+        appid: 'wx60967b2ee8cdc51b',
+        wechat: new Wechat('wx60967b2ee8cdc51b').config({
+            debug: false
+        }),
+        observer: new Observer(),
+        userInfoStorageName: 'userInfoStorageName',
+        userInfo: {
+            openid: 'oPOant46akfEwCgnJqz-qbuoh11I',
+            nickname: 'Echo',
+            sex: '1',
+            province: '广东',
+            city: '茂名',
+            country: '中国',
+            headimgurl: 'http://wx.qlogo.cn/mmopen/qvfBuS5upjanB24R8biczXeSibzbgBmNjKVGACRT0qnFwtUSORujjWVODVWKiaLCibDgibRtVVmQgoL8IF2xogHnNicDTUbIRGeuJia/0',
+            subscribe: 1
+        },
+        urlSearchObj: (function () {
+            var qs = (location.search.length > 0 ? location.search.substring(1) : ''),
+                args = {},
+                items = qs.length > 0 ? qs.split('&') : [],
+                item = null,
+                name = null,
+                value = null,
+                i = 0,
+                len = items.length;
+            for (i = 0; i < len; i++) {
+                item = items[i].split('=');
+                name = decodeURIComponent(item[0]);
+                value = decodeURIComponent(item[1]);
+                if (name.length > 0) {
+                    args[name] = value;
+                }
+            }
+            return args;
+        }()),
+        api: {
+            baseUrl: '',
+            getSth: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/get/sth',
+                    type: 'GET',
+                    data: params.query
+                });
+            },
+            postSth: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/post/sth',
+                    type: 'POST',
+                    data: params.data
+                });
+            }
+        },
+        fiboParams: {
+            pfid: 'mk_EJBmjbqEm',
+            appid: '8efcc2a8-668b-4e9f-97b0-a4de843cad17'
+        },
+        shareParams: {
+            appmessageTitle: '分享标题',
+            appmessageDesc: '分享摘要',
+            timelineTitle: '分享标题',
+            imgUrl: 'http://gz.100jc.net/brainbattle/resources/img/badge_4.png'
+        },
+        shareToFriend: function (option) {
+            option = typeof option === 'object' ? option : {};
+            _config.wechat.shareFriend({
+                appmessageTitle: option.appmessageTitle || _config.shareParams.appmessageTitle,
+                appmessageDesc: option.appmessageDesc || _config.shareParams.appmessageDesc,
+                link: fiboSDK.dealUrl(_config.wechat.filter(['code', 'debug', 'order', 'action'])),
+                imgUrl: option.imgUrl || _config.shareParams.imgUrl
+            }, function () {
+                try {
+                    fiboSDK.share('friend');
+                } catch (e) {}
+            });
+        },
+        shareToTimeline: function (option) {
+            option = typeof option === 'object' ? option : {};
+            _config.wechat.shareTimeline({
+                timelineTitle: option.timelineTitle || _config.shareParams.timelineTitle,
+                link: fiboSDK.dealUrl(_config.wechat.filter(['code', 'debug', 'order', 'action'])),
+                imgUrl: option.imgUrl || _config.shareParams.imgUrl
+            }, function () {
+                try {
+                    fiboSDK.share('timeline');
+                } catch (e) {}
+            });
+        },
+        initFeiboAndShare: function () {
+            try {
+                fiboSDK.init({
+                    pfid: _config.fiboParams.pfid,
+                    appid: _config.fiboParams.appid,
+                    mpid: _config.appid,
+                    openid: _config.userInfo.openid,
+                    userInfo: _config.userInfo
+                });
+            } catch (e) {}
+            // 斐波初始化完成后，重新配置分享格式
+            _config.shareToFriend();
+            _config.shareToTimeline();
+        },
+        // 其他配置数据
+    }
+</script>
+<script src="js/main.js" charset="utf-8"></script>
+
+</html>

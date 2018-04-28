@@ -1,0 +1,81 @@
+.regist-info {
+    &__bg {
+        width: 100%;
+    }
+    &__item-box {
+        @include abs_width_center(90%);
+        top: 42%;
+        background-color: #fff;
+        border-radius: 10px;
+        @include display_flex(column);
+    }
+    .item-box {
+        &__item {
+            position: relative;
+            padding: 5% 0 1%;
+            border-bottom: 1px #eeeeee solid;
+            >img {
+                width: 100%;
+            }
+        }
+        $item-box__item-right:5%;
+        &__item-iphone {
+            .item-box__input-iphone {
+                @include abs_vertical_middle();
+                top: 55%;
+                width: 50%;
+                height: 50%;
+                right: $item-box__item-right;
+                box-sizing: border-box;
+                border: none;
+                outline: none;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                overflow: scroll;
+                text-align: right;
+                &::placeholder {
+                    color: #b7b7b7;
+                    font-size: .7em;
+                }
+            }
+        }
+        &__item-code {
+            .item-box__input-code {
+                @include abs_vertical_middle();
+                top: 55%;
+                width: 35%;
+                height: 50%;
+                left: 15%;
+                ;
+                box-sizing: border-box;
+                border: none;
+                outline: none;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                overflow: scroll;
+                text-align: left;
+                &::placeholder {
+                    color: #b7b7b7;
+                    font-size: .7em;
+                }
+            }
+            .item-box__btn-send-code {
+                @include abs_vertical_middle();
+                right: $item-box__item-right;
+                height: 55%;
+                img {
+                    height: 100%;
+                }
+            }
+        }
+        &__btn-submit {
+            color: white;
+            font-size: .9rem;
+            background-color: #f44341;
+            width: 70%;
+            border-radius: 100px;
+            text-align: center;
+            padding: 3%;
+            margin: 8% 0 5%;
+            box-shadow: 2px -2px 5px #2f302f62 inset;
+        }
+    }
+}

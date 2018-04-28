@@ -1,0 +1,22 @@
+.limit-share {
+    &__person {
+        @include abs_width_center(40%);
+        bottom: 35%;
+    }
+    &__commom-text-box {
+        @include abs_width_center(90%);
+        top: 70%;
+        p {
+            font-size: .8rem;
+            text-align: center;
+            margin: 5px;
+        }
+    }
+    &__btn-close {
+        @include abs_width_center(12%);
+        bottom: -50px;
+        img {
+            width: 100%;
+        }
+    }
+}

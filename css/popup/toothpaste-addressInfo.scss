@@ -1,0 +1,56 @@
+.toothpaste-addressInfo {
+    &__title-photo {
+        @include abs_width_center(90%);
+        top: 5%;
+    }
+    &__item-box {
+        @include abs_width_center(90%);
+        top: 36%;
+        @include display_flex(column);
+    }
+    .item-box {
+        &__item {
+        }
+        &__item-tip {
+            text-align: center;
+            font-size: .7rem;
+            margin-bottom: 3%;
+        }
+        &__item-input-box {
+            user-select: text;
+            text-align: left;
+            margin-bottom: 3%;
+            width: 90%;
+            border: 1px #b7b7b7b6 solid;
+            border-radius: 5px;
+            background: #fff;
+            .item-box__input {
+                width: 92%;
+                padding:1% 4%;
+                vertical-align: middle;
+                height: 1.8rem;
+                line-height: 1.8rem;
+                display: inline-block;
+                user-select: text;
+                border: none;
+                -webkit-tap-highlight-color: transparent;
+                overflow: scroll;
+                text-align: left;
+                background: transparent;
+                font-size: .7rem;
+                outline-color: $theme-color;
+            }
+        }
+    }
+    &__btn-sure {
+        color: white;
+        font-size: .9rem;
+        background-color: #f44341;
+        width: 70%;
+        border-radius: 100px;
+        text-align: center;
+        padding: 4%;
+        margin: 3% 0 5%;
+        box-shadow: 2px -2px 5px #2f302f62 inset;
+    }
+}

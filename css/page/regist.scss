@@ -1,0 +1,12 @@
+.regist {
+    &__bg {
+        width: 100%;
+    }
+    &__btn-regist {
+        @include abs_width_center(56%);
+        bottom: 9%;
+        img{
+            width:100%;
+        }
+    }
+}

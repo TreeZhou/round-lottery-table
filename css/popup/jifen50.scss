@@ -1,0 +1,40 @@
+.jifen50 {
+    .wrap.awara-popup {
+        width: 90%;
+        left: 51%
+    }
+    &__prizeimg {
+        @include abs_width_center(97%);
+        top: 0;
+        left:0;
+    }
+    &__btn-text--jump-url {
+        @include abs_width_center(100%);
+        bottom: 140%;
+        span {
+            border-bottom: 1px solid $theme-color;
+            color: $theme-color;
+        }
+    }
+    &__btn-sure {
+        @include abs_width_center(80%);
+        left: 9%;
+        bottom: 2%;
+        box-sizing: border-box;
+        background-color: #f44341;
+        border-radius: 100px;
+        padding: 4%;
+        margin: 3% 0 5%;
+        box-shadow: 2px -2px 5px #2f302f62 inset;
+        color: white;
+        font-size: .9rem;
+        text-align: center;
+    }
+    &__btn-close {
+        @include abs_width_center(12%);
+        bottom: -50px;
+        img {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.share-suc {
+    .wrap.cover{
+        top:40%;
+        width:75%;
+    }
+    &__btn-close {
+        @include abs_width_center(12%);
+        bottom: -50px;
+        img {
+            width: 100%;
+        }
+    }
+}

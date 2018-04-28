@@ -1,0 +1,33 @@
+.notice-upgrade {
+    &__item-box {
+        @include display_flex(column);
+        background-color: #fff;
+        border-radius: 25px;
+        padding: 5px 10px 5px;
+        box-sizing: border-box;
+        border:6px  $box-border--bg-color solid;
+    }
+   
+    &__text--1{
+        margin-bottom: 5px;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    &__text--2{
+        padding:0 5px;
+        font-size: .7rem;
+        line-height: 1.4rem;
+    }
+    &__text--3{
+        margin-top: 4px;
+        font-size: .9rem;
+        color:#f44341;
+    }
+    &__btn-close{
+        @include abs_width_center(13%);
+        bottom:-60px;
+        img{
+            width:100%;
+        }
+    }
+}

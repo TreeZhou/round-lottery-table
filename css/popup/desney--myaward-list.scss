@@ -1,0 +1,27 @@
+.subscribe {
+    $qrcode-width: 48%;
+    $qrcode-righth: 12%;
+    &__qrcode {
+        position: absolute;
+        width: $qrcode-width;
+        right: $qrcode-righth;
+        top: -10%;
+    }
+    &__person {
+        @include abs_width_center(38%);
+        left: 0;
+        bottom: 0;
+    }
+    &__commom-text-box {
+        font-size: .7rem;
+        position: absolute;
+        right: $qrcode-righth - 7%;
+        top: 56%;
+        width: $qrcode-width+15%;
+        p {
+            text-align: center;
+            margin: 5px;
+            color: $theme-color
+        }
+    }
+}

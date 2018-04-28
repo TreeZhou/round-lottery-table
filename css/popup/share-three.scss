@@ -1,0 +1,29 @@
+.share-three {
+    &__person {
+        @include abs_width_center(26%);
+        bottom: 64%;
+    }
+    &__commom-text-box {
+        @include abs_width_center(80%);
+        top: 40%;
+        p {
+            font-size: .7rem;
+            text-align: center;
+            margin: 5px;
+        }
+    }
+    &__btn-sure {
+        @include abs_width_center(80%);
+        left: 9%;
+        bottom: 5%;
+        box-sizing: border-box;
+        background-color: #f44341;
+        border-radius: 100px;
+        padding: 4%;
+        margin: 3% 0 5%;
+        box-shadow: 2px -2px 5px #2f302f62 inset;
+        color: white;
+        font-size: .9rem;
+        text-align: center;
+    }
+}

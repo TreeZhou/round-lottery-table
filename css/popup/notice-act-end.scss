@@ -1,0 +1,30 @@
+.notice-act-end {
+    &__item-box {
+        @include display_flex(column);
+        background-color: #fff;
+        border-radius: 25px;
+        padding: 5px 10px 5px;
+        box-sizing: border-box;
+        border:6px  $box-border--bg-color solid;
+    }
+   
+    &__text--1{
+        margin-bottom: 5px;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    &__text--2{
+        text-align: center;
+        padding:5px 5px 10px;
+        font-size: .8rem;
+        line-height: 1.5rem;
+
+    }
+    &__btn-close{
+        @include abs_width_center(13%);
+        bottom:-60px;
+        img{
+            width:100%;
+        }
+    }
+}

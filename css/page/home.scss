@@ -1,0 +1,42 @@
+.home {
+    &__bg {
+        width: 100%;
+    }
+    &__lottery-box {
+        @include abs_width_center(70%);
+        top:23%;
+        padding-top:70%;
+        .turntable-content {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left:0;
+        }
+        .turntable-start {
+            @include abs_width_center(34%);
+            top: 26%;
+        }
+    }
+}
+
+.lotterydiv {
+    position: absolute;
+    width: 89%;
+    left: 5.5%;
+    top: 16%;
+    .turntable-content_bg {
+        width: 100%;
+    }
+    .turntable-content {
+        position: absolute;
+        width: 82%;
+        left: 8.6%;
+        top: 9%;
+    }
+    .turntable-start {
+        position: absolute;
+        width: 34%;
+        left: 34%;
+        top: 28%;
+    }
+}
