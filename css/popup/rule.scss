@@ -3,9 +3,10 @@
         @include abs_width_center(88%);
         top: 18%;
         height: 60%;
+        overflow: scroll;
+        
         .rule__commom-text-box {
-            height: 100%;
-            overflow: scroll;
+            // height: 100%;
             -webkit-overflow-scrolling: touch; //安卓专有属性
             t1 {
                 // border:1px ;
@@ -37,7 +38,7 @@
         box-sizing: border-box;
         background-color: #f44341;
         border-radius: 100px;
-        padding: 4%;
+        padding: 3%;
         margin: 3% 0 5%;
         box-shadow: 2px -2px 5px #2f302f62 inset;
         color: white;
@@ -46,6 +47,6 @@
     }
     &__see-more {
         @include abs_width_center(35%);
-        bottom: 125%;
+        bottom:18%;
     }
 }

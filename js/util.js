@@ -207,21 +207,40 @@ exports.sectionToChinese = function (section) {
 
 
 
-exports.chineseToNumber=function (chnStr) {
+exports.chineseToNumber = function (chnStr) {
 	var chnNumChar = {
-		零: 0,一: 1,二: 2,三: 3,四: 4,五: 5,六: 6,七: 7,八: 8,九: 9
+		零: 0,
+		一: 1,
+		二: 2,
+		三: 3,
+		四: 4,
+		五: 5,
+		六: 6,
+		七: 7,
+		八: 8,
+		九: 9
 	};
-	
+
 	var chnNameValue = {
-		十: {value: 10,secUnit: false
+		十: {
+			value: 10,
+			secUnit: false
 		},
-		百: {value: 100,secUnit: false
+		百: {
+			value: 100,
+			secUnit: false
 		},
-		千: {value: 1000,secUnit: false
+		千: {
+			value: 1000,
+			secUnit: false
 		},
-		万: {value: 10000,secUnit: true
+		万: {
+			value: 10000,
+			secUnit: true
 		},
-		亿: {value: 100000000,secUnit: true
+		亿: {
+			value: 100000000,
+			secUnit: true
 		}
 	}
 	var rtn = 0;
@@ -251,4 +270,148 @@ exports.chineseToNumber=function (chnStr) {
 		}
 	}
 	return rtn + section;
+}
+
+
+/**
+ * url : string 带有参数的链接
+ * deleteParam： 数组 ["friend"] 过滤掉friend名字的参数以及参数值，输入需要过滤的参数名
+ * linkParam： 数组 [name:"friend",value:"1111"] 所需要增加 拼接的参数及参数值
+ * 最终返回的是需要拼接在URL？后面的的参数字符串
+ */
+exports.getRequestParam = function (url, deleteParam, linkParam) {  
+	let localURL = url;  
+	let index = url.indexOf("?");  
+	let singleArray = [];  
+	let deleteParams = deleteParam ? deleteParam.join() : "";  
+	let linkParams = linkParam ? linkParam : 0;  
+	let paramStr = "";  
+	if (index != -1) {  
+		let afterurl = url.substr(index + 1);  
+		let strs = afterurl.split("&");  
+		for (let i = 0; i < strs.length; i++) { //去重
+			    
+			if (singleArray.indexOf(strs[i]) == -1) {    
+				singleArray.push(strs[i]);    
+			}  
+		}  
+		for (let j = 0; j < singleArray.length; j++) { //删除不需要的参数
+			    
+			let paramsName = singleArray[j].split("=")[0];    
+			let paramsValue = singleArray[j].split("=")[1];    
+			if (deleteParams.indexOf(paramsName) == -1) {    
+				paramStr += paramsName + "=" + paramsValue + "&";    
+			}  
+		}  
+		if (linkParams) { //增加参数
+			    
+			for (let i = 0; i < linkParams.length; i++) {    
+				paramStr += linkParams[i].name + "=" + linkParams[i].value + "&"    
+			}  
+		}  
+		paramStr = paramStr.substring(0, paramStr.length - 1);  
+	}  
+	if (index == -1) {
+		if (linkParams) { //增加参数
+			for (let i = 0; i < linkParams.length; i++) {    
+				paramStr += linkParams[i].name + "=" + linkParams[i].value + "&"    
+			}  
+		}  
+		paramStr = paramStr.substring(0, paramStr.length - 1);  
+	}  
+
+	return paramStr;
+}
+
+//获取是否关注公众号
+exports.getSubscribe = function () {
+	return new Promise((resolve, reject) => {
+		Config.wechat.getSubscribe(Config.userInfo.openid, function (err, res) { //根据用户的微信个人信息获取用户是否已关注公众号
+			if (err) {
+				return ;
+				// return alert(err);
+				
+			}
+			Config.subscribe = res.subscribe;
+			resolve();
+		})
+	})
+}
+//获取是用户最近信息
+exports.getInfo = function () {
+	let params = {
+		data: {
+			openid: Config.userInfo.openid,
+		}
+	}
+	return Promise.resolve(Api.getInfo(params)).then((res) => {
+			if (!res.success) {
+				return Promise.reject(res);
+			}
+			Config.userInfo = res.result;
+
+		})
+		.catch((err) => {
+			let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
+			try {
+				Raven.captureMessage(`<更新用户信息>失败`, {
+					level: 'error',
+					extra: {
+						data: errMsg
+					}
+				});
+			} catch (e) {}
+			// return alert(errMsg);
+		})
+}
+exports.getSystemStarus = function () {
+	return Promise.resolve(Api.config()).then((res) => {
+		if (!res.success) {
+			return ;
+		}
+		Config.systemStatus = res.result;
+	}).catch((err) => {
+		let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
+		try {
+			Raven.captureMessage(`<获取系统状态>失败`, {
+				level: 'error',
+				extra: {
+					data: errMsg
+				}
+			});
+		} catch (e) {}
+		// return alert(errMsg);
+	})
+}
+exports.addFrend = function () {
+
+	if (!Config.urlSearchObj['from_openid']) {
+		return;
+	}
+	if (window.localStorage.getItem("firstEnter")) {
+		return;
+	}
+	let params = {
+		data: {
+			openid: Config.userInfo.openid,
+			from_openid: Config.urlSearchObj['from_openid']
+		}
+	}
+	Promise.resolve(Api.addFriend(params)).then((res) => {
+		if (!res.success) {
+			return ;
+		}
+		console.log("增加朋友：", res)
+	}).catch((err) => {
+		let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
+		try {
+			Raven.captureMessage(`<添加好友>失败`, {
+				level: 'error',
+				extra: {
+					data: errMsg
+				}
+			});
+		} catch (e) {}
+		// return alert(errMsg);
+	})
 }

@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <!--<base href="http://weijie.91iot.net/CDN路径/">-->
+    <!-- <base href="http://libai.91iot.net/redFans7/"> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
-    <title>项目标题</title>
+    <title>幸运转转转</title>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
         <div class="page regist">
             <div class="container">
                 <img src="./resources/img/regist__bg.jpg" class="regist__bg">
-                <div class="click_for_img-btn regist__btn-regist btn-has-active">
+                <div class="click_for_img-btn regist__btn-regist btn-has-active" id="btnRegist">
                     <img src="./resources/img/regist__btn-regist.png">
                 </div>
             </div>
@@ -29,24 +29,50 @@
             <div class="container">
                 <img src="./resources/img/regist-info__bg.jpg" class="regist-info__bg">
                 <div class="regist-info__item-box">
-                    <div class="item-box__item item-box__item-hobby click_for_img-btn">
+                    <div class="item-box__item click_for_img-btn item-box__item-hobby " id="btnHobby">
                         <img src="./resources/img/icon-hobby.png">
+                        <select id="hobbyType" class=" regist-info__form-item-select" disabled>
+                            <option id="hobbyText">请选择</option>
+                            <option value="1">旅游</option>
+                            <option value="2">美食</option>
+                            <option value="3">运动健身</option>
+                            <option value="4">影视娱乐</option>
+                            <option value="5">艺术与音乐</option>
+                            <option value="6">育儿及亲子</option>
+                            <option value="7">时尚、美容美妆</option>
+                            <option value="8">阅读</option>
+                            <option value="9">游戏</option>
+                            <option value="10">写生摄影</option>
+                            <option value="11">理财</option>
+                            <option value="12">园艺、茶艺、插花等休闲娱乐</option>
+                        </select>
                     </div>
-                    <div class="item-box__item click_for_img-btn click_for_img-btn">
+                    <div class="item-box__item  click_for_img-btn" id="btnKid">
                         <img src="./resources/img/icon-kid.png">
+                        <select id="kidType" class=" regist-info__form-item-select" disabled>
+                            <option>请选择</option>
+                            <option value="0">没有小孩</option>
+                            <option value="1">1岁</option>
+                            <option value="2">2岁</option>
+                            <option value="3">3岁</option>
+                            <option value="4">4岁</option>
+                            <option value="5">5岁</option>
+                            <option value="6">6岁</option>
+                            <option value="7">7岁以上</option>
+                        </select>
                     </div>
                     <div class="item-box__item item-box__item-iphone">
                         <img src="./resources/img/icon-iphone.png">
-                        <input type="number" class="item-box__input-iphone" placeholder="请输入手机号码">
+                        <input type="number" class="item-box__input-iphone" id="inputMobile" placeholder="请输入手机号码">
                     </div>
                     <div class="item-box__item item-box__item-code">
                         <img src="./resources/img/icon-code.png">
-                        <input type="number" class="item-box__input-code" placeholder="请输入验证码">
-                        <div class="item-box__btn-send-code click_for_img-btn">
-                            <img src="./resources/img/btn-send-code.png">
+                        <input type="number" class="item-box__input-code" id="inputCode" placeholder="请输入验证码">
+                        <div class="item-box__btn-send-code btn-has-active" id="btnSecdCode">
+                            <span id="sendText">发送验证码</span>
                         </div>
                     </div>
-                    <div class="item-box__btn-submit btn-has-active">
+                    <div class="item-box__btn-submit btn-has-active" id="btnSubmit">
                         <span>提交抽大奖</span>
                     </div>
                 </div>
@@ -57,12 +83,180 @@
         <!--普通页面-->
         <div class="page home">
             <div class="container">
-                <img src="./resources/img/home_bg.jpg" class="home__bg" /> 
-                <div class="home__lottery-box">
-                        <!-- <img src="resources/img/turntable-content.png"  /> -->
-                    <img src="resources/img/turntable-content.png" class="turntable-content" />
-                    <img src="resources/img/turntable-start.png" class="turntable-start" />
+                <div class="home__box">
+
+                    <img src="./resources/img/home_bg.jpg" class="home__bg" />
+                    <img src="resources/img/icon-btn-rule.png" class="home__rule" id="home__rule" />
+
+                    <div class="home__lottery-box">
+                        <img src="resources/img/turntable-content.png" class="turntable-content" id="turntable-content" />
+                        <img src="resources/img/turntable-start.png" class="turntable-start" id="turntable-start" />
+                    </div>
+
+                    <div class="home__btn-lottery-time">
+                        您还有
+                        <span id="lotteryTimes">1</span>次抽奖机会
+                    </div>
+                    <img src="resources/img/home__common-text.png" class="home__common-text" />
+                    <div class="home__list-box">
+                        <img src="resources/img/home__bg-list.png" class="home__bg-list" />
+                        <div class="weui-tab ranklist" id="ranklist">
+                            <div class="weui-navbar" id="weuiNavbar">
+                                <span class="weui-navbar__item  redbottom" id="btnWinnerList" data-index="1" href="#tab1">
+                                    中奖名单
+                                </span>
+                                <span class="weui-navbar__item" id="btnMyinvite" data-index="2" href="#tab2">
+                                    我的邀请
+                                </span>
+                                <span class="weui-navbar__item" id="btnMyprize" data-index="3" href="#tab3">
+                                    我的奖品
+                                </span>
+                            </div>
+                            <div class="weui-tab__bd" id="listScrollBox">
+                                <div id="tab1" class="weui-tab__bd-item scrollable ">
+                                    <div class="warp">
+                                        <div class="username">
+                                            <img src="resources/img/user.png" alt="">小妹子</div>
+                                        <div class="people redfont">15:25抽中了
+                                            <span>“滴滴快车5元出行券”</span>
+                                        </div>
+                                    </div>
+                                    <div class="warp">
+                                        <div class="username">
+                                            <img src="resources/img/user.png" alt="">小妹子</div>
+                                        <div class="people redfont">15:45抽中
+                                            <span>“1元红包”</span>
+                                        </div>
+                                    </div>
+                                    <div class="warp">
+                                        <div class="username">
+                                            <img src="resources/img/user.png" alt="">小妹子</div>
+                                        <div class="people redfont">15:50抽中
+                                            <span>“50元红包”</span>
+                                        </div>
+                                    </div>
+                                    <div class="warp">
+                                        <div class="username">
+                                            <img src="resources/img/user.png" alt="">小妹子</div>
+                                        <div class="people redfont">16:50抽中
+                                            <span>“迪士尼亲子家庭游”</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab2" class="weui-tab__bd-item scrollable no-active">
+                                    <div class="warp">
+                                        <div class="username">
+                                            <img src="resources/img/user.png" alt="">小妹子</div>
+                                        <div class="people redfont">
+                                            <span>2017-07-12</span>
+                                        </div>
+                                    </div>
+                                    <div class="warp">
+
+                                        <div class="username">
+                                            <img src="resources/img/user.png" alt="">小妹子</div>
+                                        <div class="people redfont">
+                                            <span>2017-07-12</span>
+                                        </div>
+                                    </div>
+                                    <div class="warp">
+
+                                        <div class="username">
+                                            <img src="resources/img/user.png" alt="">小妹子</div>
+                                        <div class="people redfont">
+                                            <span>2017-07-12</span>
+                                        </div>
+                                    </div>
+                                    <div class="warp">
+
+                                        <div class="username">
+                                            <img src="resources/img/user.png" alt="">小妹子</div>
+                                        <div class="people redfont">
+                                            <span>2017-07-12</span>
+                                        </div>
+                                    </div>
+                                    <div class="warp">
+
+                                        <div class="username">
+                                            <img src="resources/img/user.png" alt="">小妹子</div>
+                                        <div class="people redfont">
+                                            <span>2017-07-12</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab3" class="weui-tab__bd-item scrollable no-active">
+                                    <div class="warp">
+                                        <div class="prizename">
+                                            <img src="resources/img/award-list--same-city.png">
+                                        </div>
+                                        <div class="prizecontent">
+                                            <div class="prize-title">同城活动</div>
+                                            <div class="prize-path">您有一份来自城市的邀请函未查收</div>
+                                        </div>
+                                        <div class="click_for_img-btn  btn-has-active turntable-right" data-awardtype="7">
+                                            <img src="resources/img/turntable-right.png">
+                                        </div>
+
+                                    </div>
+                                    <div class="warp">
+                                        <div class="prizename--text">
+                                            <span class="amount">2</span>元
+                                        </div>
+                                        <div class="prizecontent--text">
+                                            <div class="prize-title">2元微信红包</div>
+                                            <div class="prize-path">您的真爱红包已到账，请注意查收</div>
+                                        </div>
+                                    </div>
+                                    <div class="warp">
+                                        <div class="prizename ">
+                                            <img src="resources/img/award-list--toothpaste.png">
+                                        </div>
+                                        <div class="prizecontent ">
+                                            <div class="prize-title">呵呵宝贝儿童牙膏</div>
+                                            <div class="prize-path">让宝贝用上更健康的牙膏</div>
+                                        </div>
+                                        <div class="click_for_img-btn  btn-has-active turntable-right" data-awardtype="3">
+                                            <img src="resources/img/turntable-right.png">
+                                        </div>
+
+                                    </div>
+                                    <div class="warp">
+                                        <div class="prizename ">
+                                            <img src="resources/img/award-list--disney.png">
+                                        </div>
+                                        <div class="prizecontent ">
+                                            <div class="prize-title">迪士尼亲子家庭游</div>
+                                            <div class="prize-path">手机记得开机哟，客服MM联系您</div>
+                                        </div>
+                                        <div class="click_for_img-btn  btn-has-active turntable-right" data-awardtype="1">
+                                            <img src="resources/img/turntable-right.png">
+                                        </div>
+
+                                    </div>
+                                    <div class="warp">
+                                        <div class="prizename--text">
+                                            <span class="amount">50</span>元
+                                        </div>
+                                        <div class="prizecontent--text">
+                                            <div class="prize-title">50元微信红包</div>
+                                            <div class="prize-path">现金红包才是真爱，请注意查收</div>
+                                        </div>
+                                    </div>
+                                    <div class="warp">
+                                        <div class="prizename--text">
+                                            <span class="amount">20</span>分
+                                        </div>
+                                        <div class="prizecontent--text">
+                                            <div class="prize-title">立乐家20积分</div>
+                                            <div class="prize-path">太划算了，快来微商城转转吧</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
         <!--普通页面-->
@@ -88,24 +282,24 @@
             <div class="box">
                 <div class="wrap hobby__item-box">
                     <div class="hobby__title item-box__item">您的喜好:</div>
-                    <div class="hobby__options item-box__item">
-                        <span>旅游</span>
-                        <span>美食</span>
-                        <span>运动健身</span>
-                        <span>影视娱乐</span>
-                        <span>艺术与音乐</span>
-                        <span>育儿及亲子</span>
-                        <span>时尚、美容美妆</span>
-                        <span class="hobby__hobby-active">阅读</span>
-                        <span>游戏</span>
-                        <span>写生摄影</span>
-                        <span>理财</span>
-                        <span>园艺、茶艺、插花等休闲娱乐</span>
+                    <div class="hobby__options item-box__item" id="hobbyOptionsBox">
+                        <span data-index='1'>旅游</span>
+                        <span data-index='2'>美食</span>
+                        <span data-index='3'>运动健身</span>
+                        <span data-index='4'>影视娱乐</span>
+                        <span data-index='5'>艺术与音乐</span>
+                        <span data-index='6'>育儿及亲子</span>
+                        <span data-index='7'>时尚、美容美妆</span>
+                        <span data-index='8'>阅读</span>
+                        <span data-index='9'>游戏</span>
+                        <span data-index='10'>写生摄影</span>
+                        <span data-index='11'>理财</span>
+                        <span data-index='12'>园艺、茶艺、插花等休闲娱乐</span>
                     </div>
-                    <div class="hobby__btn-sure item-box__item">
+                    <div class="hobby__btn-sure item-box__item" id="hobbyBtnSure">
                         <span>确定</span>
                     </div>
-                    <div class="hobby__btn-close click_for_img-btn btn-has-active">
+                    <div class="hobby__btn-close click_for_img-btn btn-has-active" id="hobbyBtnClose">
                         <img src="./resources/img/btn-close.png">
                     </div>
                 </div>
@@ -118,20 +312,20 @@
             <div class="box">
                 <div class="wrap kid__item-box">
                     <div class="kid__title item-box__item">您的小孩:</div>
-                    <div class="kid__options item-box__item">
-                        <span>没有小孩</span>
-                        <span>1岁</span>
-                        <span>2岁</span>
-                        <span>3岁</span>
-                        <span>4岁</span>
-                        <span>5岁</span>
-                        <span class="kid__kid-active">6岁</span>
-                        <span>7岁以上</span>
+                    <div class="kid__options item-box__item" id="kidOptionsBox">
+                        <span data-index="0">没有小孩</span>
+                        <span data-index="1">1岁</span>
+                        <span data-index="2">2岁</span>
+                        <span data-index="3">3岁</span>
+                        <span data-index="4">4岁</span>
+                        <span data-index="5">5岁</span>
+                        <span data-index="6">6岁</span>
+                        <span data-index="7">7岁以上</span>
                     </div>
-                    <div class="kid__btn-sure item-box__item">
+                    <div class="kid__btn-sure item-box__item" id="kidBtnSure">
                         <span>确定</span>
                     </div>
-                    <div class="kid__btn-close click_for_img-btn btn-has-active">
+                    <div class="kid__btn-close click_for_img-btn btn-has-active" id="kidBtnClose">
                         <img src="./resources/img/btn-close.png">
                     </div>
                 </div>
@@ -146,7 +340,7 @@
                     <p class="notice-upgrade__text--1"> 系统升级提示</p>
                     <p class="notice-upgrade__text--2">您好，十分感谢您对我们活动的支持，目前完善资料抽奖活动火热进行中，为更好回馈我们的新老会员，我们将于7月29日18:00～次日10:00之间进行系统升级，以便大家抽中的奖品更快到达大家账户，敬请期待哦。对此造成大家的不便，深表歉意。</p>
                     <p class="notice-upgrade__text--3">期待明日您可以抽到迪士尼大奖哦</p>
-                    <div class="notice-upgrade__btn-close click_for_img-btn btn-has-active">
+                    <div class="notice-upgrade__btn-close click_for_img-btn btn-has-active" id="noticeUpgradeBtnClose">
                         <img src="./resources/img/btn-clode--circle.png">
                     </div>
                 </div>
@@ -161,7 +355,7 @@
                     <p class="notice-act-end__text--1"> 活动结束提醒</p>
                     <p class="notice-act-end__text--2">亲，请尽快到立乐家完善会员资料，</br> 抽中的奖品才能更快到您手里哦~ </br>本次活动将于8月4日18:00正式结束，</br> 想要了解更多福利，</br> 请持续关注立乐家，么么哒！
                     </p>
-                    <div class="notice-act-end__btn-close click_for_img-btn btn-has-active">
+                    <div class="notice-act-end__btn-close click_for_img-btn btn-has-active" id="noticeActEndBtnClose">
                         <img src="./resources/img/btn-clode--circle.png">
                     </div>
                 </div>
@@ -175,16 +369,17 @@
                 <div class="wrap awara-popup">
                     <img src="resources/img/award_bg.png" class="wrap__bg" />
                     <img src="resources/img/photo-desney--popup.png" class="desney__prizeimg" />
-                    <div class="desney__btn-sure">
-                        <div class="desney__btn-text--jump-url">
-                            <span>*关注立乐家回复迪士尼大奖</br>
-                                立乐家客服电话：
-                                <a href="tel:020-81808822">020-81808822</a>
-                            </span>
-                        </div>
+                    <div class="desney__btn-text--jump-url">
+                        <span>*关注立乐家回复迪士尼大奖</br>
+                            立乐家客服电话：
+                            <a href="tel:020-81808822">020-81808822</a>
+                        </span>
+                    </div>
+                    <div class="desney__btn-sure click_for_img-btn btn-has-active" id="desneyBtnSure">
+
                         <span>再来一次</span>
                     </div>
-                    <div class="desney__btn-close click_for_img-btn btn-has-active">
+                    <div class="desney__btn-close click_for_img-btn btn-has-active" id="desneyBtnClose">
                         <img src="./resources/img/btn-clode--circle.png">
                     </div>
                 </div>
@@ -198,13 +393,14 @@
                 <div class="wrap awara-popup">
                     <img src="resources/img/award_bg.png" class="wrap__bg" />
                     <img src="resources/img/photo-panda--popup.png" class="same-city__prizeimg" />
-                    <div class="same-city__btn-sure">
-                        <div class="same-city__btn-text--jump-url">
-                            <span>戳我填写信息</span>
-                        </div>
+                    <div class="same-city__btn-text--jump-url" id="sameCityBtnJump">
+                        <span>戳我填写信息</span>
+                    </div>
+                    <div class="same-city__btn-sure" id="sameCityBtnSure">
+
                         <span>再来一次</span>
                     </div>
-                    <div class="same-city__btn-close click_for_img-btn btn-has-active">
+                    <div class="same-city__btn-close click_for_img-btn btn-has-active" id="sameCityBtnClose">
                         <img src="./resources/img/btn-clode--circle.png">
                     </div>
                 </div>
@@ -218,13 +414,14 @@
                 <div class="wrap awara-popup">
                     <img src="resources/img/award_bg.png" class="wrap__bg" />
                     <img src="resources/img/photo-toothpaste--popup.png" class="toothpaste__prizeimg" />
-                    <div class="toothpaste__btn-sure">
-                        <div class="toothpaste__btn-text--jump-url">
-                            <span>戳我填写信息</span>
-                        </div>
+                    <div class="toothpaste__btn-text--jump-url" id="toothpasteBtnAddr">
+                        <span>戳我填写信息</span>
+                    </div>
+                    <div class="toothpaste__btn-sure" id="toothpasteBtnSure">
+
                         <span>再来一次</span>
                     </div>
-                    <div class="toothpaste__btn-close click_for_img-btn btn-has-active">
+                    <div class="toothpaste__btn-close click_for_img-btn btn-has-active" id="toothpasteBtnClose">
                         <img src="./resources/img/btn-clode--circle.png">
                     </div>
                 </div>
@@ -238,18 +435,19 @@
                 <div class="wrap awara-popup">
                     <img src="resources/img/award_bg.png" class="wrap__bg" />
                     <img src="resources/img/photo-redpack--popup.png" class="redpack__prizeimg" />
-                    <div class="redpack__btn-sure">
-                        <div class="redpack__btn-text--jump-url">
-                            <p class="redpack__commom-text--amount">恭喜你抽中
-                                <span class="award-amount">X元红包</span>哦！
-                            </p>
-                            <span class="redpack__commom-text">撒花！幸福红包已火速发出，
-                                </br> 回到立乐家公众号即可领取。
-                            </span>
-                        </div>
+                    <div class="redpack__btn-text--jump-url">
+                        <p class="redpack__commom-text--amount">恭喜你抽中
+                            <span class="award-amount" id="redpackAmount">X元红包</span>哦！
+                        </p>
+                        <span class="redpack__commom-text">撒花！幸福红包已火速发出，
+                            </br> 回到立乐家公众号即可领取。
+                        </span>
+                    </div>
+                    <div class="redpack__btn-sure" id="redpackBtnSure">
+
                         <span>再来一次</span>
                     </div>
-                    <div class="redpack__btn-close click_for_img-btn btn-has-active">
+                    <div class="redpack__btn-close click_for_img-btn btn-has-active" id="redpackBtnClose">
                         <img src="./resources/img/btn-clode--circle.png">
                     </div>
                 </div>
@@ -263,13 +461,14 @@
                 <div class="wrap awara-popup">
                     <img src="resources/img/award_bg.png" class="wrap__bg" />
                     <img src="resources/img/photo-jifen100--popup.png" class="jifen100__prizeimg" />
-                    <div class="jifen100__btn-sure">
-                        <div class="jifen100__btn-text--jump-url">
-                            <span>戳我直接去兑换</span>
-                        </div>
+                    <div class="jifen100__btn-text--jump-url" id="jifen100BtnJumpUrl">
+                        <span>戳我直接去兑换</span>
+                    </div>
+                    <div class="jifen100__btn-sure btn-has-active" id="jifen100BtnSure">
+
                         <span>再来一次</span>
                     </div>
-                    <div class="jifen100__btn-close click_for_img-btn btn-has-active">
+                    <div class="jifen100__btn-close click_for_img-btn btn-has-active" id="jifen100BtnClose">
                         <img src="./resources/img/btn-clode--circle.png">
                     </div>
                 </div>
@@ -283,13 +482,14 @@
                 <div class="wrap awara-popup">
                     <img src="resources/img/award_bg.png" class="wrap__bg" />
                     <img src="resources/img/photo-jifen50--popup.png" class="jifen50__prizeimg" />
-                    <div class="jifen50__btn-sure">
-                        <div class="jifen50__btn-text--jump-url">
-                            <span>戳我直接去兑换</span>
-                        </div>
+                    <div class="jifen50__btn-text--jump-url" id="jifen50BtnJumpUrl">
+                        <span>戳我直接去兑换</span>
+                    </div>
+                    <div class="jifen50__btn-sure btn-has-active" id="jifen50BtnSure">
+
                         <span>再来一次</span>
                     </div>
-                    <div class="jifen50__btn-close click_for_img-btn btn-has-active">
+                    <div class="jifen50__btn-close click_for_img-btn btn-has-active" id="jifen50BtnClose">
                         <img src="./resources/img/btn-clode--circle.png">
                     </div>
                 </div>
@@ -303,20 +503,41 @@
                 <div class="wrap awara-popup">
                     <img src="resources/img/award_bg.png" class="wrap__bg" />
                     <img src="resources/img/photo-jifen20--popup.png" class="jifen20__prizeimg" />
-                    <div class="jifen20__btn-sure">
-                        <div class="jifen20__btn-text--jump-url">
-                            <span>戳我直接去兑换</span>
-                        </div>
+                    <div class="jifen20__btn-text--jump-url" id="jifen20BtnJumpUrl">
+                        <span>戳我直接去兑换</span>
+                    </div>
+                    <div class="jifen20__btn-sure btn-has-active" id="jifen20BtnSure">
+
                         <span>再来一次</span>
                     </div>
-                    <div class="jifen20__btn-close click_for_img-btn btn-has-active">
+                    <div class="jifen20__btn-close click_for_img-btn btn-has-active" id="jifen20BtnClose">
                         <img src="./resources/img/btn-clode--circle.png">
                     </div>
                 </div>
             </div>
         </div>
         <!--积分20奖品页面-->
+        <!--积分10奖品页面-->
+        <div class="popup jifen10">
+            <div class="mask"></div>
+            <div class="box">
+                <div class="wrap awara-popup">
+                    <img src="resources/img/award_bg.png" class="wrap__bg" />
+                    <img src="resources/img/photo-jifen10--popup.png" class="jifen10__prizeimg" />
+                    <div class="jifen10__btn-text--jump-url" id="jifen10BtnJumpUrl">
+                        <span>戳我直接去兑换</span>
+                    </div>
+                    <div class="jifen10__btn-sure btn-has-active" id="jifen10BtnSure">
 
+                        <span>再来一次</span>
+                    </div>
+                    <div class="jifen10__btn-close click_for_img-btn btn-has-active" id="jifen10BtnClose">
+                        <img src="./resources/img/btn-clode--circle.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--积分10奖品页面-->
         <!--填写信息-->
         <div class="toothpaste-addressInfo popup">
             <div class="mask"></div>
@@ -325,17 +546,17 @@
                     <img src="resources/img/commom_bg-long.png" class="wrap__bg" />
                     <img src="resources/img/photo-toothpaste.png" class="toothpaste-addressInfo__title-photo" />
                     <div class="toothpaste-addressInfo__item-box ">
-                        <p class='item-box__item-tip item-box__item'>我们将于近期内安排配送，请填写准确的收货信息</p>
+                        <p class='item-box__item-tip item-box__item'>我们将于近期内安排配送</br>请填写准确的收货信息</p>
                         <div class="item-box__item-input-box item-box__item">
-                            <input type="text" class="item-box__input" id="name" placeholder="请输入联系人姓名"></input>
+                            <input type="text" class="item-box__input" id="toothpasteUsername" placeholder="请输入联系人姓名"></input>
                         </div>
                         <div class="item-box__item-input-box item-box__item">
-                            <input type="text" class="item-box__input" id="phonenumber" placeholder="请输入联系人手机"></input>
+                            <input type="text" class="item-box__input" id="toothpasteMobile" placeholder="请输入联系人手机"></input>
                         </div>
                         <div class="item-box__item-input-box item-box__item">
-                            <input type="text" class="item-box__input" id="address" placeholder="请输入收获地址"></input>
+                            <input type="text" class="item-box__input" id="toothpasteAddress" placeholder="请输入收获地址"></input>
                         </div>
-                        <div class="toothpaste-addressInfo__btn-sure item-box__item">
+                        <div class="toothpaste-addressInfo__btn-sure item-box__item" id="toothpasteAddressInfoBtnSure">
                             <span>提交信息</span>
                         </div>
                     </div>
@@ -376,7 +597,7 @@
                         </p>
                         <p>告诉小伙伴，每三人成功参与即可再得一次抽奖机会哦</p>
                     </div>
-                    <div class="share-three__btn-sure item-box__item">
+                    <div class="share-three__btn-sure item-box__item btn-has-active" id="shareThreeBtnSure">
                         <span>确定</span>
                     </div>
                 </div>
@@ -389,7 +610,7 @@
             <div class="box">
                 <div class="wrap cover">
                     <img src="./resources/img/share-suc_bg.png" class="wrap__bg">
-                    <div class="share-suc__btn-close click_for_img-btn btn-has-active">
+                    <div class="share-suc__btn-close click_for_img-btn btn-has-active" id="shareSucBtnClose">
                         <img src="./resources/img/btn-clode--circle.png">
                     </div>
                 </div>
@@ -397,18 +618,18 @@
         </div>
         <!--分享成功提示弹窗-->
         <!--抽奖受限提示弹窗-->
-        <div class="popup limit-share">
+        <div class="popup limit-lottery">
             <div class="mask"></div>
             <div class="box">
                 <div class="wrap">
                     <img src="./resources/img/commom_bg-middle.png" class="wrap__bg">
-                    <img src="./resources/img/icon-limit-share.png" class="limit-share__person">
-                    <div class="limit-share__commom-text-box">
+                    <img src="./resources/img/icon-limit-lottery.png" class="limit-lottery__person">
+                    <div class="limit-lottery__commom-text-box">
                         <p>很抱歉，您今日的抽奖次数已耗尽，
                         </p>
                         <p>感谢您的积极参与，请明日再来哦~</p>
                     </div>
-                    <div class="limit-share__btn-close click_for_img-btn btn-has-active">
+                    <div class="limit-lottery__btn-close click_for_img-btn btn-has-active" id="limitLotteryBtnClose">
                         <img src="./resources/img/btn-clode--circle.png">
                     </div>
                 </div>
@@ -432,12 +653,12 @@
             <div class="box">
                 <div class="wrap">
                     <img src="./resources/img/rule_bg.png" class="wrap__bg">
-                    <div class="rule__commom-box">
+                    <div class="rule__commom-box" id="ruleCommomText">
                         <div class="rule__commom-text-box">
                             <t1>活动时间：</t1>
                             <p>2018年5月4号~8月31号
                             </p>
-                            <t1>参与方式:</t1>
+                            <t1>参与方式：</t1>
                             <div>
                                 <p>1、完善会员信息即可获得一次抽奖机会；</p>
                                 <p>2、成功告知三个好友成为会员，即可获得一次抽奖机会；</p>
@@ -458,7 +679,7 @@
                                 <p>2、有任何疑问，请联系立乐家客服：
                                     <a href="tel:020-81808822">020-81808822</a>。</p>
                             </div>
-                            <t1>红包答疑: </t1>
+                            <t1>红包答疑：</t1>
                             <div>
                                 <p>如遇红包发放失败情况，请检查是否存在以下问题：</p>
                                 <p>1、微信号未绑定银行卡或手机号码；</p>
@@ -469,8 +690,8 @@
                         </div>
 
                     </div>
-                    <div class="rule__btn-sure item-box__item">
-                        <img src="./resources/img/see-more.png" class="rule__see-more">
+                    <img src="./resources/img/see-more.png" class="rule__see-more" id="rulSeeMore">
+                    <div class="rule__btn-sure item-box__item" id="ruleBtnSure">
                         <span>确定</span>
                     </div>
                 </div>
@@ -484,29 +705,29 @@
             <div class="box">
                 <div class="wrap">
                     <img src="./resources/img/same-city-info_bg.png" class="wrap__bg">
-                    <div class="same-city-info__item-box">
-                        <div class="same-city-info__item">
-                            <img src="./resources/img/same-city_option1.png" class="same-city_option1">
+                    <div class="same-city-info__item-box" id="sameCityInfoOptionsBox">
+                        <div class="same-city-info__item click_for_img-btn" data-index="1">
+                            <img src="./resources/img/same-city_option1.png" class="same-city_option1 ">
                             <img src="./resources/img/same-city_option1--act.png" class="same-city_option1 option-act">
                         </div>
-                        <div class="same-city-info__item">
+                        <div class="same-city-info__item click_for_img-btn" data-index="2">
                             <img src="./resources/img/same-city_option2.png" class="same-city_option2">
                             <img src="./resources/img/same-city_option2--act.png" class="same-city_option2 option-act">
                         </div>
-                        <div class="same-city-info__item">
+                        <div class="same-city-info__item click_for_img-btn" data-index="3">
                             <img src="./resources/img/same-city_option3.png" class="same-city_option3">
                             <img src="./resources/img/same-city_option3--act.png" class="same-city_option3 option-act">
                         </div>
-                        <div class="same-city-info__item">
+                        <div class="same-city-info__item click_for_img-btn" data-index="4">
                             <img src="./resources/img/same-city_option4.png" class="same-city_option4">
                             <img src="./resources/img/same-city_option4--act.png" class="same-city_option4 option-act">
                         </div>
                     </div>
                     <div class="same-city-info__input-box">
                         <img src="./resources/img/same-city_input-border.png" class="wrap__bg">
-                        <input type="text" class="same-city-info__input" placeholder="请留下手机号码，方便我们与您联系">
+                        <input type="text" class="same-city-info__input" id="sameCityInfoInput" placeholder="请留下手机号码，方便我们与您联系">
                     </div>
-                    <div class="same-city-info__btn-sure item-box__item">
+                    <div class="same-city-info__btn-sure item-box__item" id="sameCityInfoBtnSure">
                         <span>确定</span>
                     </div>
                 </div>
@@ -525,39 +746,163 @@
 
     </div>
     <!--加载提示-->
+
     <div class="loading">
-        <!--<img src="resources/img/page_bg.jpg" class="loading__bg">-->
-        <img src="resources/img/loading.svg" class="loading__logo">
-        <div class="loading__progress">
-            <div class="loading__progress-wrap">
-                <div class="loading__progress-wrap-bar"></div>
-            </div>
-            <div class="loading__progress-tip-text">大脑已启动
-                <span class="loading__progress-tip-text-num">0%</span>...</div>
+        <img src="resources/img/zhuanpandi.png" alt="" class="zhuanpandi">
+        <img src="resources/img/zhuanpan.png" alt="" class="zhuanpan">
+        <div class="loading-wrap">
+            <div class="progress-bar" style="width: 100%;"></div>
+            <div class="text">正在拼命加载中，请稍等片刻哦...</div>
         </div>
     </div>
-    <!--初始加载提示页结束-->
+
+    <div class="zhanxian-box">
+        <img src="resources/img/zhanxian.png" alt="" class="zhanxian">
+    </div>
+    <div class="xiaxian-box">
+        <img src="resources/img/xiaxian.png" alt="" class="xiaxian">
+    </div>
 </body>
-<!--<script src="resources/lib/vconsole.min.js" charset="utf-8"></script>-->
+<!--初始加载提示页结束-->
+
+<!--中奖者列表模板-->
+<script type="text/html" id="winnerListTemplate">
+    <% for(var i = 0; i<list.length;i++){var item = list[i];%>
+        <div class="warp">
+            <div class="username">
+                <img src="<%=item.headimgurl%>">
+                <%=item.nickname%>
+            </div>
+            <div class="people redfont">
+                <%=item.created_at.slice(11, 16)%>抽中了
+                    <span>“
+                        <%=item.name%>”</span>
+            </div>
+        </div>
+        <%}%>
+</script>
+<!--中奖者列表模板-->
+<!--我的邀请列表模板-->
+<script type="text/html" id="myFrendsListTemplate">
+    <% for(var i = 0; i<list.length;i++){var item = list[i];%>
+        <div class="warp">
+            <div class="username">
+                <img src="<%= item.headimgurl%>">
+                <%=item.nickname%>
+            </div>
+            <div class="people redfont">
+                <span>
+                    <%=item.created_at.slice(11, 16)%>
+                </span>
+            </div>
+        </div>
+        <%}%>
+</script>
+<!--我的邀请列表模板-->
+<!-- <%=item.created_at.slice(11, 16)%> -->
+
+<!--我的奖品模板-->
+<script type="text/html" id="myPrizeListTemplate">
+    <% for(var i = 0; i<list.length;i++){var item = list[i];%>
+        <% if(item.type ==2){%>
+            <div class="warp">
+                <div class="prizename--text">
+                    <span class="amount">
+                        <%=item.amount/100%>
+                    </span>元
+                </div>
+                <div class="prizecontent--text">
+                    <div class="prize-title">
+                        <%=item.amount/100%>元微信红包</div>
+                    <div class="prize-path">您的真爱红包已到账，请注意查收</div>
+                </div>
+            </div>
+            <%} else if(item.type ==3){%>
+                <div class="warp">
+                    <div class="prizename--text">
+                        <span class="amount">
+                            <%=item.name.replace("立乐家","").replace("积分","")%>
+                        </span>分
+                    </div>
+                    <div class="prizecontent--text">
+                        <div class="prize-title">
+                            <%=item.name%>
+                        </div>
+                        <div class="prize-path">太划算了，快来微商城转转吧</div>
+                    </div>
+                    <div class="click_for_img-btn  btn-has-active turntable-right" data-awardtype="8">
+                        <img src="resources/img/turntable-right.png">
+                    </div>
+                </div>
+
+                <%} else if(item.award_id ==7){%>
+                    <div class="warp">
+                        <div class="prizename">
+                            <img src="resources/img/award-list--same-city.png">
+                        </div>
+                        <div class="prizecontent">
+                            <div class="prize-title">同城活动</div>
+                            <div class="prize-path">您有一份来自城市的邀请函未查收</div>
+                        </div>
+                        <% if(!item.mobile){%>
+                            <div class="click_for_img-btn  btn-has-active turntable-right" data-awardtype="7" data-id="<%=item.id%>">
+                                <img src="resources/img/turntable-right.png">
+                            </div>
+                            <% }%>
+                    </div>
+                    <% }else if(item.award_id ==3){%>
+                        <div class="warp">
+                            <div class="prizename ">
+                                <img src="resources/img/award-list--toothpaste.png" class="award-list--toothpast-btn">
+                            </div>
+                            <div class="prizecontent ">
+                                <div class="prize-title">呵呵宝贝儿童牙膏</div>
+                                <div class="prize-path">让宝贝用上更健康的牙膏</div>
+                            </div>
+                            <% if(!item.mobile){%>
+                                <div class="click_for_img-btn  btn-has-active turntable-right" data-awardtype="3" data-id="<%=item.id%>">
+                                    <img src="resources/img/turntable-right.png">
+                                </div>
+                                <% }%>
+                        </div>
+                        <% }else if(item.award_id ==1){%>
+                            <div class="warp">
+                                <div class="prizename ">
+                                    <img src="resources/img/award-list--disney.png">
+                                </div>
+                                <div class="prizecontent ">
+                                    <div class="prize-title">迪士尼亲子家庭游</div>
+                                    <div class="prize-path">手机记得开机哟，客服MM联系您</div>
+                                </div>
+                                <div class="click_for_img-btn  btn-has-active turntable-right" data-awardtype="1" data-id="<%=item.id%>">
+                                    <img src="resources/img/turntable-right.png">
+                                </div>
+                            </div>
+                            <%}%>
+                                <%}%>
+
+</script>
+<!--我的奖品模板-->
+<script src="./resources/lib/vconsole.min.js" charset="utf-8"></script>
 <script id="fiboDataSDK" src="https://res.fibodata.com/data/fibosdk.min.js" charset="utf-8"></script>
-<script src="resources/lib/jquery-3.1.1.min.js" charset="utf-8"></script>
-<script src="resources/lib/touch.js" charset="utf-8"></script>
-<script src="resources/lib/ejs.min.js" charset="utf-8"></script>
-<script src="resources/lib/observer.js" charset="utf-8"></script>
-<script src="resources/lib/jweixin-1.2.0.js" charset="utf-8"></script>
-<script src="http://weijie.91iot.net/new-open-service/libs/wechat.js" charset="utf-8"></script>
+<script src="./resources/lib/jquery-3.1.1.min.js" charset="utf-8"></script>
+<script src="./resources/lib/touch.js" charset="utf-8"></script>
+<script src="./resources/lib/ejs.min.js" charset="utf-8"></script>
+<script src="./resources/lib/observer.js" charset="utf-8"></script>
+<script src="./resources/lib/jweixin-1.2.0.js" charset="utf-8"></script>
+<script src="http://weijie.91iot.net/open-service/libs/wechat.js" charset="utf-8"></script>
 <script src="./resources/lib/jQueryRotate.2.2.js"></script>
 
-<!--<script src="resources/lib/raven.min.js"></script>-->
+<!-- <script src="resources/lib/raven.min.js"></script> -->
 <script>
     // 初始化 Sentry
-    // try {
-    //     Raven.config('https://f916bfd480cd454fb30f6367b5b8465c@sentry.szzbmy.com/78').install()
-    // }catch(e){}
+    try {
+        // Raven.config('https://95d66a2dd0cd4dbfabc4bcb10811ce45@sentry.szzbmy.com/89').install()
+    } catch (e) {}
     // 初始化VConsole
-    // try {
-    //     new VConsole();
-    // }catch(e){}
+    try {
+        new VConsole();
+    } catch (e) {}
 </script>
 <script>
     // 设置 ajax 请求可以带上 cookie
@@ -572,21 +917,34 @@
         winWidth: window.innerWidth,
         winHeight: window.innerHeight,
         // 中北的APPID：wx60967b2ee8cdc51b
-        appid: 'wx60967b2ee8cdc51b',
-        wechat: new Wechat('wx60967b2ee8cdc51b').config({
+        appid: 'wx26be12d215d3d8cb',
+        wechat: new Wechat('wx26be12d215d3d8cb').config({
             debug: false
         }),
         observer: new Observer(),
-        userInfoStorageName: 'userInfoStorageName',
+        userInfoStorageName: 'userInfoStorageName22',
         userInfo: {
-            openid: 'oPOant46akfEwCgnJqz-qbuoh11I',
-            nickname: 'Echo',
-            sex: '1',
-            province: '广东',
-            city: '茂名',
-            country: '中国',
-            headimgurl: 'http://wx.qlogo.cn/mmopen/qvfBuS5upjanB24R8biczXeSibzbgBmNjKVGACRT0qnFwtUSORujjWVODVWKiaLCibDgibRtVVmQgoL8IF2xogHnNicDTUbIRGeuJia/0',
-            subscribe: 1
+            "id": 3,
+            "openid": "oPOantwaM-AwXMZFjzwsfc8W4dS4",
+            "headimgurl": "http://thirdwx.qlogo.cn/mmopen/vi_32/wWwqibZ06ibhibfBFf1OrCeWraBbx9nZrTovM3icFh59cKhKicOwC7wmSJenlRzn4qsng5wSj5p7bFMlYNsquxYfu2g/132",
+            "nickname": "木木",
+            "username": null,
+            "sex": "1",
+            "city": "广州",
+            "province": "广东",
+            "country": "中国",
+            "mobile": null,
+            "friends": 0,
+            "chance": 100,
+            "chance_add": 0,
+            "chance_buy": 0,
+            "subscribe": 0, //判断用户是否注册立白账号
+            "cnl": null,
+            "hobby": null,
+            "child": 0,
+            "subscribetime": "2018-05-02 11:51:28",
+            "created_at": "2018-05-02 11:51:28",
+            "updated_at": "2018-05-02 11:59:30"
         },
         urlSearchObj: (function () {
             var qs = (location.search.length > 0 ? location.search.substring(1) : ''),
@@ -607,8 +965,135 @@
             }
             return args;
         }()),
+
+        //中奖名单
+        allprize: null,
+        //我成功邀请的好友
+        myfriends: null,
+        //我的奖品
+        myprize: null,
+        sendCodeTime: 60,
+        subscribe: 1, //判断用户是否关注公众号
+        //存放中奖数据
+        jumpUrlObj: {
+            awardListToothpastBtn: "https://clubwx.hm.liby.com.cn/integral/weixin_integral.htm",
+            awardListJifenBtn: "https://clubwx.hm.liby.com.cn/integral/weixin_integral.htm",
+            Jifen10Btn: "https://clubwx.hm.liby.com.cn/integral/weixin_integral.htm",
+            Jifen20Btn: "https://clubwx.hm.liby.com.cn/integral/weixin_integral.htm",
+            Jifen50Btn: "https://clubwx.hm.liby.com.cn/integral/weixin_integral.htm",
+            Jifen100Btn: "https://clubwx.hm.liby.com.cn/integral/weixin_integral.htm",
+
+
+        },
+        awardData: {
+            amount: 10,
+        },
+        systemStatus: null,
+        systemStatusMyself: {
+            upgrade: false,
+            activeEnd: false
+        },
         api: {
+            //正式
+            // baseUrl: 'http://www.zbzdcy.com/redFans7',
+            //正式
+            //测试            
             baseUrl: '',
+            //测试            
+
+            //获取验证码 
+            getCode: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/verify/' + params.data.mobile + '/' + params.data.openid,
+                    type: 'GET',
+                });
+            },
+            //用户注册 
+            register: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/register',
+                    type: 'POST',
+                    data: params.data
+                });
+            },
+            //用户登录 
+            login: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/login',
+                    type: 'POST',
+                    data: params.data
+                });
+            },
+            //获取中奖数据 
+            winnerList: function (params) {
+                var query = "?";
+                // debugger;
+                query = params.data.page ? (query + "page=" + params.data.page) : query;
+                query = params.data.openid ? query + "&openid=" + params.data.openid : query;
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/prizes/select' + query,
+                    type: 'GET',
+                });
+            },
+            //好友列表 
+            myFrendsList: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/friends/' + params.data.openid,
+                    type: 'GET',
+                });
+            },
+            //获取奖品列表 
+            prizeList: function () {
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/prizes/list',
+                    type: 'GET',
+                });
+            },
+            //获取用户信息
+            getInfo: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/info/' + params.data.openid,
+                    type: 'GET',
+                });
+            },
+            //用户抽奖 
+            lottery: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/lottery/' + params.data.openid,
+                    type: 'POST',
+                });
+            },
+            //获取配置信息
+            config: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/config',
+                    type: 'GET',
+                });
+            },
+            //提交收件信息
+            putAddress: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/lottery/address/' + params.data.id,
+                    type: 'PUT',
+                    data: params.data
+                });
+            },
+            //提交同城活动的类别和联系手机信息
+            putActive: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/lottery/active/' + params.data.id,
+                    type: 'PUT',
+                    data: params.data
+                });
+            },
+            addFriend: function (params) {
+                return $.ajax({
+                    url: this.baseUrl + '/api/user/friend',
+                    type: 'POST',
+                    data: params.data
+                });
+            },
+            ////
             getSth: function (params) {
                 return $.ajax({
                     url: this.baseUrl + '/get/sth',
@@ -622,43 +1107,64 @@
                     type: 'POST',
                     data: params.data
                 });
-            }
+            },
         },
         fiboParams: {
-            pfid: 'mk_EJBmjbqEm',
-            appid: '8efcc2a8-668b-4e9f-97b0-a4de843cad17'
+            pfid: 'mk_kid4ICKr',
+            appid: '09d588f0-29f4-45f3-951c-63b5c8deb65a'
         },
         shareParams: {
-            appmessageTitle: '分享标题',
-            appmessageDesc: '分享摘要',
-            timelineTitle: '分享标题',
-            imgUrl: 'http://gz.100jc.net/brainbattle/resources/img/badge_4.png'
+            appmessageTitle: '呵呵宝贝携功夫熊猫3邀您一同畅玩迪士尼',
+            appmessageDesc: '当转盘转速大于过山车的时速时，是离大奖最近的时刻',
+            timelineTitle: '呵呵宝贝携功夫熊猫3邀您一同畅玩迪士尼',
+            imgUrl: 'http://www.zbzdcy.com/redFans7/h5/resources/img/icon-share.jpg'
         },
+        shareUrl: "http://jump.lbldg.com/JlYLB5/",
         shareToFriend: function (option) {
+            var shareQuery = Util.getRequestParam(window.location.href, ['code', 'from_openid'], [{
+                name: "from_openid",
+                value: Config.userInfo.openid
+            }]);
+            var url = _config.shareUrl + "?" + shareQuery;
             option = typeof option === 'object' ? option : {};
             _config.wechat.shareFriend({
                 appmessageTitle: option.appmessageTitle || _config.shareParams.appmessageTitle,
                 appmessageDesc: option.appmessageDesc || _config.shareParams.appmessageDesc,
-                link: fiboSDK.dealUrl(_config.wechat.filter(['code', 'debug', 'order', 'action'])),
+                link: fiboSDK.dealUrl(url),
                 imgUrl: option.imgUrl || _config.shareParams.imgUrl
             }, function () {
+                Popup.shareSuc.show();
+                Popup.share.hide();
+                Util.getInfo(); //更新数据用户数据
+                View.home.initTimes(); //重置抽奖次数
                 try {
                     fiboSDK.share('friend');
                 } catch (e) {}
             });
         },
         shareToTimeline: function (option) {
+            var shareQuery = Util.getRequestParam(window.location.href, ['code', 'from_openid'], [{
+                name: "from_openid",
+                value: Config.userInfo.openid
+            }]);
+            var url = _config.shareUrl + "?" + shareQuery;
             option = typeof option === 'object' ? option : {};
-            _config.wechat.shareTimeline({
-                timelineTitle: option.timelineTitle || _config.shareParams.timelineTitle,
-                link: fiboSDK.dealUrl(_config.wechat.filter(['code', 'debug', 'order', 'action'])),
+            _config.wechat.shareFriend({
+                appmessageTitle: option.appmessageTitle || _config.shareParams.appmessageTitle,
+                appmessageDesc: option.appmessageDesc || _config.shareParams.appmessageDesc,
+                link: fiboSDK.dealUrl(url),
                 imgUrl: option.imgUrl || _config.shareParams.imgUrl
             }, function () {
+                Popup.shareSuc.show();
+                Popup.share.hide();
+                Util.getInfo(); //更新数据用户数据
+                View.home.initTimes(); //重置抽奖次数
                 try {
-                    fiboSDK.share('timeline');
+                    fiboSDK.share('friend');
                 } catch (e) {}
             });
         },
+
         initFeiboAndShare: function () {
             try {
                 fiboSDK.init({
@@ -670,9 +1176,12 @@
                 });
             } catch (e) {}
             // 斐波初始化完成后，重新配置分享格式
+
+        },
+        initShareConfig() {
             _config.shareToFriend();
             _config.shareToTimeline();
-        },
+        }
         // 其他配置数据
     }
 </script>

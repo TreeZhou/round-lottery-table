@@ -1,0 +1,22 @@
+//项目加载提示
+.zhanxian-box {
+    display: none;
+    @include abs_full_page();
+    background-color: #fff;
+    .zhanxian {
+        width:90%;
+        @include abs_both_middle();
+    }
+   
+}
+
+.xiaxian-box {
+    display: none;
+    @include abs_full_page();
+    background-color: #fff;
+    .xiaxian {
+        width:80%;
+        
+        @include abs_both_middle();
+    }
+}

@@ -32,6 +32,7 @@ html, body, .main{
     overflow: hidden;
     .container{
         @include abs_full_page();
+     
     }
 }
 
@@ -103,6 +104,7 @@ html, body, .main{
 @import "./page/home";
 @import "./page/regist";
 @import "./page/regist-info";
+@import "./page/zhanxianxiaxian";
 
 //引入弹窗文件
 @import "./popup/rule";
@@ -120,13 +122,13 @@ html, body, .main{
 @import "./popup/jifen100";
 @import "./popup/jifen50";
 @import "./popup/jifen20";
+@import "./popup/jifen10";
 @import "./popup/share-three";
-@import "./popup/limit-share";
+@import "./popup/limit-lottery";
 @import "./popup/share-suc";
 @import "./popup/same-city-info";
 
 @import "./popup/toothpaste-addressInfo";
-
 
 
 

@@ -15,13 +15,14 @@
             text-align: center;
             font-size: .7rem;
             margin-bottom: 3%;
+            
         }
         &__item-input-box {
             user-select: text;
             text-align: left;
             margin-bottom: 3%;
             width: 90%;
-            border: 1px #b7b7b7b6 solid;
+            border: 1px rgb(134, 132, 132) solid;
             border-radius: 5px;
             background: #fff;
             .item-box__input {
@@ -39,6 +40,7 @@
                 background: transparent;
                 font-size: .7rem;
                 outline-color: $theme-color;
+                
             }
         }
     }
@@ -49,7 +51,7 @@
         width: 70%;
         border-radius: 100px;
         text-align: center;
-        padding: 4%;
+        padding: 3%;
         margin: 3% 0 5%;
         box-shadow: 2px -2px 5px #2f302f62 inset;
     }

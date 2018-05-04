@@ -9,8 +9,9 @@
         left:0;
     }
     &__btn-text--jump-url {
-        @include abs_width_center(100%);
-        bottom: 140%;
+        @include abs_width_center(80%);
+        text-align: center;
+        top: 70%;
         span {
             border-bottom: 1px solid $theme-color;
             color: $theme-color;
@@ -23,7 +24,7 @@
         box-sizing: border-box;
         background-color: #f44341;
         border-radius: 100px;
-        padding: 4%;
+        padding: 3%;
         margin: 3% 0 5%;
         box-shadow: 2px -2px 5px #2f302f62 inset;
         color: white;

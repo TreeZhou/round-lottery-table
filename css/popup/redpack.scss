@@ -6,21 +6,23 @@
     &__prizeimg {
         @include abs_width_center(97%);
         top: 0;
-        left:0;
+        left: 0;
     }
     &__btn-text--jump-url {
-        @include abs_width_center(100%);
-        bottom: 112%;
+        @include abs_width_center(80%);
+        text-align: center;
+        top: 59%;
         .redpack__commom-text {
-            font-size:.7rem;
+            font-size: .7rem;
             color: black;
         }
-        .redpack__commom-text--amount{
-            margin:5px;;
-            font-size:1rem;
+        .redpack__commom-text--amount {
+            margin: 5px;
+            ;
+            font-size: 1rem;
             color: black;
-            .award-amount{
-            color: $theme-color;
+            .award-amount {
+                color: $theme-color;
             }
         }
     }
@@ -31,7 +33,7 @@
         box-sizing: border-box;
         background-color: #f44341;
         border-radius: 100px;
-        padding: 4%;
+        padding: 3%;
         margin: 3% 0 5%;
         box-shadow: 2px -2px 5px #2f302f62 inset;
         color: white;

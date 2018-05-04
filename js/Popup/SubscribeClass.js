@@ -1,19 +1,31 @@
-class RuleClass extends BasePopupClass{
+class RuleClass extends BasePopupClass {
 
-    constructor(str){
+    constructor(str) {
         super(str);
         // viewAdapt.push(".rule .box", config.ratio);
     }
 
-    init(){
-        
-    }
+    init() {
+        // 控件声明
+        this.$box = this.$dom.find('.box');
+        this.initBoxEvent();
 
-    show(){
+    }
+    initBoxEvent() {
+        this.$box.on('tap', (event) => {
+            if (event.target !== this.$box[0]) {
+                return;
+            }
+            this.hide();
+            Util.getSubscribe();
+
+        });
+    }
+    show() {
         super.show();
     }
 
-    hide(){
+    hide() {
         super.hide();
     }
 

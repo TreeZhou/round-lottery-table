@@ -1,19 +1,27 @@
-class RuleClass extends BasePopupClass{
+class RuleClass extends BasePopupClass {
 
-    constructor(str){
+    constructor(str) {
         super(str);
         // viewAdapt.push(".rule .box", config.ratio);
     }
 
-    init(){
-        
-    }
+    init() {
+        this.$shareThreeBtnSure = this.$dom.find("#shareThreeBtnSure");
 
-    show(){
-        super.show();
-    }
+        this.initBtnClose();
 
-    hide(){
+
+    }
+    initBtnClose() {
+        this.$shareThreeBtnSure.on("tap", () => {
+            Popup.share.show();
+            this.hide();
+            try {
+                fiboSDK.btnClick('share-three-btn', '分享指引提示-确定');
+            } catch (e) {}
+        });
+    }
+    hide() {
         super.hide();
     }
 

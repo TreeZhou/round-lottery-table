@@ -1,19 +1,41 @@
-class RuleClass extends BasePopupClass{
+class RuleClass extends BasePopupClass {
 
-    constructor(str){
+    constructor(str) {
         super(str);
         // viewAdapt.push(".rule .box", config.ratio);
     }
 
-    init(){
-        
-    }
+    init() {
+        this.$toothpasteBtnClose = this.$dom.find("#toothpasteBtnClose");
+        this.$toothpasteBtnSure = this.$dom.find("#toothpasteBtnSure");
+        this.$toothpasteBtnAddr = this.$dom.find("#toothpasteBtnAddr");
 
-    show(){
+        this.initBtnClose();
+        this.initBtnSure();
+        this.initBtnAddr();
+
+    }
+    initBtnClose() {
+        this.$toothpasteBtnClose.on("tap", (e) => {
+            this.hide();
+        });
+    }
+    initBtnSure() {
+        this.$toothpasteBtnSure.on("tap", (e) => {
+            this.hide();
+        });
+    }
+    initBtnAddr() {
+        this.$toothpasteBtnAddr.on("tap", (e) => {
+            Popup.toothpasteAddressInfo.show();
+            this.hide();
+        });
+    }
+    show() {
         super.show();
     }
 
-    hide(){
+    hide() {
         super.hide();
     }
 

@@ -1,3 +1,5 @@
+"use strict"
+
 // 确保 finally 函数有效（jquery使用finally时，记得先用Promise包装一层）
 Promise.prototype.finally = Promise.prototype.finally || function (callback) {
     let P = this.constructor;
@@ -8,7 +10,6 @@ Promise.prototype.finally = Promise.prototype.finally || function (callback) {
         })
     );
 };
-
 // 全局引入基类文件
 global.BaseClass = require('./BaseClass');
 global.BasePopupClass = require('./BasePopupClass');
@@ -48,9 +49,11 @@ const Redpack = require('./Popup/RedpackClass');
 const Jifen100 = require('./Popup/Jifen100Class');
 const Jifen50 = require('./Popup/Jifen50Class');
 const Jifen20 = require('./Popup/Jifen20Class');
+const Jifen10 = require('./Popup/Jifen10Class');
+
 const ToothpasteAddressInfo = require('./Popup/ToothpasteAddressInfoClass');
 const ShareThree = require('./Popup/ShareThreeClass');
-const LimitShare = require('./Popup/LimitShareClass');
+const LimitLottery = require('./Popup/LimitLotteryClass');
 const ShareSuc = require('./Popup/ShareSucClass');
 const SameCityInfo = require('./Popup/SameCityInfoClass');
 
@@ -95,8 +98,10 @@ let initUI = function () {
     Popup.jifen100 = new Jifen100('.jifen100');
     Popup.jifen50 = new Jifen50('.jifen50');
     Popup.jifen20 = new Jifen20('.jifen20');
+
+    Popup.jifen10 = new Jifen10('.jifen10');
     Popup.shareThree = new ShareThree('.share-three');
-    Popup.limitShare = new LimitShare('.limit-share');
+    Popup.limitLottery = new LimitLottery('.limit-lottery');
     Popup.shareSuc = new ShareSuc('.share-suc');
     Popup.sameCityInfo = new SameCityInfo('.same-city-info');
 
@@ -107,84 +112,158 @@ let initUI = function () {
 }
 
 let init = function () {
-    // Config.initFeiboAndShare();     // 创建斐波并注册分享事件
+    Config.initFeiboAndShare(); // 创建斐波
+    Config.initShareConfig(); // 注册分享事件
     // initFontSize();
+    Util.addFrend();
     initUI();
     $('.main').show();
     View.loading.show();
     View.loading.preload((loaded, total) => {
         const percent = parseInt(loaded / total * 100);
-        let timeStatus = 0;
-        View.loading.$dom.find('.loading__progress-wrap-bar').css({
-            width: percent + '%'
-        });
-        View.loading.$dom.find('.loading__progress-tip-text-num').html(`${percent}%`);
+        Loading.loading(percent);
         if (loaded === total) {
             // 完全加载完图片后的操作
             View.loading.hide();
-            // View.home.show();
-
-
-            // if(Config.userInfo.subscribe === 0){    //如果用户尚未关注公众号
-            //     //显示二维码弹窗或其他操作
-            //     return;
-            // }
-            //其后正常的流程代码在这里
-
-
-            // 测试
-
-            // View.regist.show();
-            // View.registInfo.show();
-            View.home.show();
-
-            // Popup.subscribe.show();
-            // Popup.desneyMyawardList.show();
-
-            // Popup.hobby.show();
-            // Popup.kid.show();
-            // Popup.noticeUpgrade.show();
-            // Popup.noticeActEnd.show();
-            // Popup.share.show();
-            // Popup.toothpasteAddressInfo.show();
-            // Popup.desney.show();
-            // Popup.sameCity.show();
-            // Popup.toothpaste.show();
-            // Popup.redpack.show();
-            // Popup.jifen100.show();
-            // Popup.jifen50.show();
-            // Popup.jifen20.show();
-            // Popup.shareThree.show();
-            // Popup.limitShare.show();
-            // Popup.rule.show();
-            // Popup.shareSuc.show();
-            // Popup.sameCityInfo.show();
-
-
-
-
-            // 测试
+            Util.getSystemStarus().then(() => { //获取活动状态
+                initShowPage();
+            });
         }
     });
 }
+
+function initShowPage() {
+    // //测试
+    // View.regist.show();
+    // View.home.show();
+    // $('.zhanxian-box').show();
+    // $('.xiaxian-box').show();
+
+    // View.regist.show();
+    // View.registInfo.show();
+    // View.home.show();
+    // Popup.subscribe.show();
+    // Popup.desneyMyawardList.show();
+    // Popup.hobby.show();
+    // Popup.kid.show();
+    // Popup.noticeUpgrade.show();
+    // Popup.noticeActEnd.show();
+    // Popup.share.show();
+    // Popup.toothpasteAddressInfo.show();
+    // Popup.desney.show();
+    // Popup.sameCity.show();
+    // Popup.toothpaste.show();
+    // Popup.redpack.show();
+    // Popup.jifen100.show();
+    // Popup.jifen50.show();
+    // Popup.jifen20.show();
+    // Popup.jifen10.show();
+    // Popup.shareThree.show();
+    // Popup.limitShare.show();
+    // Popup.rule.show();
+    // Popup.shareSuc.show();
+    // Popup.sameCityInfo.show();
+
+    // 测试
+
+    // 正式
+
+    //下线页面
+    if (!Config.systemStatus.is_active) {
+        $('.xiaxian-box').show();
+        return;
+    }
+    //占线页面
+    if (Config.systemStatus.is_warn) {
+        $('.zhanxian-box').show();
+        return;
+    }
+    //活动结束页面
+    if (Config.systemStatusMyself.activeEnd) {
+        View.regist.show();
+        Popup.noticeActEnd.show();
+        return;
+    }
+    //活动升级页面
+    if (Config.systemStatusMyself.upgrade) {
+        View.regist.show();
+        Popup.noticeUpgrade.show();
+        return;
+    }
+
+    // 第一次进入页面
+    if (!window.localStorage.getItem("firstEnter")) {
+        View.regist.show();
+        window.localStorage.setItem("firstEnter", "no");
+    } else {
+        //非第一次进入页面
+        if (!Config.subscribe) {
+            View.regist.show();
+            return;
+        }
+        if (!Config.userInfo.subscribe) {
+            View.regist.show();
+            return;
+        }
+        View.home.show();
+    }
+
+    if (Config.urlSearchObj['debug']) {
+        return;
+    }
+
+
+
+
+
+
+}
+
 
 // 系统进行初始化
 if (Config.debug && Config.urlSearchObj['debug']) { //当前处于调试模式
     init();
 } else if (window.localStorage.getItem(Config.userInfoStorageName)) {
     Config.userInfo = JSON.parse(window.localStorage.getItem(Config.userInfoStorageName));
-    init();
-} else if (Config.wechat.getQuery('code')) { //项目链接来自于授权完成后的跳转
-    Config.wechat.ready(function () {
-        Config.wechat.getUserInfo(function (err, res) { //根据用户信息
-            if (err) {
-                return alert(err);
-            }
-            window.localStorage.setItem(Config.userInfoStorageName, JSON.stringify(res));
-            Config.userInfo = res;
-            init();
-        });
+    Util.getInfo().then((res) => {
+        return Promise.resolve(Util.getSubscribe())
+    }).then((res) => {
+        init();
     });
+    // .catch((res) => {
+    //     console.log("获取信息发生错误：" + res)
+    // })
+} else if (Config.wechat.getQuery('code')) { //项目链接来自于授权完成后的跳转
+    let params = {
+        data: {
+            code: Config.urlSearchObj['code'],
+            cnl: Config.urlSearchObj['cnl'],
+        }
+    }
+    // return;
+    Promise.resolve(Api.login(params)).then((res) => {
+        if (!res.success) {
+            Config.wechat.goAuth('snsapi_userinfo', 'STATE', Config.wechat.filter());
+            return;
+        }
+        window.localStorage.setItem(Config.userInfoStorageName, JSON.stringify(res.result));
+        Config.userInfo = res.result;
+        return Promise.resolve(Util.getSubscribe())
+    }).then(() => {
+        init();
+    }).catch((err) => {
+        let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
+        try {
+            Raven.captureMessage(`<登陆>失败`, {
+                level: 'error',
+                extra: {
+                    data: errMsg
+                }
+            });
+        } catch (e) {}
+        return alert(errMsg);
+    })
+
 } else { //用户首次打开该项目需要完成授权
     Config.wechat.goAuth('snsapi_userinfo', 'STATE', Config.wechat.filter());
 }
@@ -238,7 +317,7 @@ $(function () {
                 if (top === 0) {
                     this.scrollTop = 1;
                 } else if (currentScroll === totalScroll) {
-                    this.scrollTop = top - 1;
+                    this.scrollTop = top - 10;
                 }
             });
             el.addEventListener('touchmove', function (evt) {
@@ -253,9 +332,9 @@ $(function () {
         //In this case, the default behavior is scrolling the body, which
         //would result in an overflow.  Since we don't want that, we preventDefault.
         if (!evt._isScroller) {
-            evt.preventDefault();
+            // evt.preventDefault();
         }
     });
     overscroll(document.querySelectorAll('.scrollable'));
 });
-Util.bgFullPage([".regist__bg", "regist-info__bg"]);
+Util.bgFullPage([".regist__bg", ".regist-info__bg"]);

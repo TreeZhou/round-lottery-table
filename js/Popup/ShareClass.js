@@ -5,10 +5,16 @@ class RuleClass extends BasePopupClass{
         // viewAdapt.push(".rule .box", config.ratio);
     }
 
-    init(){
-        
+      
+    init() {
+        this.$box = this.$dom.find(".box");
+        this.initBtnClose();
     }
-
+    initBtnClose() {
+        this.$box.on("tap", () => {
+            this.hide();
+        });
+    }
     show(){
         super.show();
     }

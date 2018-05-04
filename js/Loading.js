@@ -1,9 +1,14 @@
+let loadingBar = $(".loading").find(".progress-bar"),
+loadingText = $(".loading").find(".text");
+
 class Loading extends BaseClass {
 	constructor(str) {
 		super(str);
 	}
 
 	init() {
+		this.$bar = this.$dom.find(".progress-bar");
+		this.$text = this.$dom.find(".text");
 
 	}
 
@@ -61,11 +66,36 @@ class Loading extends BaseClass {
 			}
 		})
 	}
-	
+
+
 	hide() {
 		this.$dom.hide();
 	}
+	// static loading(percent, text) {
+	// 	this.$bar.css({
+	// 		width: percent + '%'
+	// 	});
+	// 	if (!text) {
+	// 		return;
+	// 	}
+	// 	this.$text.html(text);
+	// }
 
+	static loading(percent, text) {
+		loadingBar.css({
+			width: percent + '%'
+		});
+		if (!text) {
+			return;
+		}
+		loadingText.html(text);
+	}
+	static loadingShow() {
+		loading.fadeIn();
+		loading.find('.progress-bar').css({
+			width: '0%'
+		});
+	}
 }
 
 module.exports = Loading;
