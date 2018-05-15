@@ -21,16 +21,16 @@ class HomeClass extends BaseClass {
                 Popup.subscribe.show();
                 return;
             }
-            if (!Config.userInfo.subscribe) {
-                View.registInfo.show();
+            if (Config.userInfo.mobile) {
                 this.hide();
-                try {
-                    fiboSDK.btnClick('regist-btn-regist', '首页-立即注册');
-                } catch (e) {}
+                View.home.show();
                 return;
             }
-            View.home.show();
+            View.registInfo.show();
             this.hide();
+            try {
+                fiboSDK.btnClick('regist-btn-regist', '首页-立即注册');
+            } catch (e) {}
         });
     }
     show() {

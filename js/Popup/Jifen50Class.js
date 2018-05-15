@@ -27,6 +27,10 @@ class RuleClass extends BasePopupClass {
     initBtnSure() {
         this.$jifen50BtnSure.on("tap", (e) => {
             this.hide();
+            if (Config.userInfo.chance == 0) {
+                Popup.shareThree.show();
+                
+            }
             try {
                 fiboSDK.btnClick('jifen50-btn-again', '中奖50积分-再来一次');
             } catch (e) {}

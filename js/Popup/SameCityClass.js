@@ -24,6 +24,10 @@ class RuleClass extends BasePopupClass {
     initBtnSure() {
         this.$sameCityBtnSure.on("tap", (e) => {
             this.hide();
+            if (Config.userInfo.chance == 0) {
+                Popup.shareThree.show();
+
+            }
         });
     }
     initBtnJumpUrl() {

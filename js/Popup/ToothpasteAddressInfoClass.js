@@ -67,7 +67,7 @@ class RuleClass extends BasePopupClass {
             TipManager.show("请先输入手机号码");
             return false;
         }
-        if (!/^1[345678]\d{9}$/i.test(this.submitData.mobile)) {
+        if (!/^1[23456789]\d{9}$/i.test(this.submitData.mobile)) {
             TipManager.show("你输入的不是手机号码");
             return false;
         }
@@ -132,7 +132,6 @@ class RuleClass extends BasePopupClass {
 
     hide() {
         View.home.initMyPrizeList(1); //渲染列表--我的奖品
-        
         super.hide();
     }
 

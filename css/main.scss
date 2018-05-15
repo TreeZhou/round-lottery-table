@@ -4,55 +4,54 @@
 @import "./common/mixin";
 @import "./common/animate";
 @import "./common/font";
-
 // 自定义字体
 // @font-face{
 //     font-family: CNregular;
 //     src: url('../resources/font/CNregular.otf');
 // }
-
 //根结点样式设置
-html{
+html {
     // font-size: 18px;
     font-family: Arial, "黑体";
-    -webkit-overflow-scrolling: touch;  //安卓专有属性
+    -webkit-overflow-scrolling: touch; //安卓专有属性
 }
-html, body, .main{
+
+html,
+body,
+.main {
     position: relative;
     width: 100%;
-    height: 100%;
-    // font-family: CNregular;
+    height: 100%; // font-family: CNregular;
 }
 
 //默认的page样式
-.page{
+.page {
     @include abs_full_page();
     display: none;
     background: #fff;
     overflow: hidden;
-    .container{
+    .container {
         @include abs_full_page();
-     
     }
 }
 
 //默认的popup样式
-.popup{
+.popup {
     @include abs_full_page();
     display: none;
     z-index: 1;
     overflow: hidden;
-    .mask{
+    .mask {
         background: rgba(0, 0, 0, .65);
         @include abs_full_page();
     }
-    .box{
+    .box {
         @include abs_full_page();
-        .wrap{
+        .wrap {
             transform-origin: 50% 50%;
             @include abs_both_middle();
             width: 82%;
-            &__bg{
+            &__bg {
                 display: block;
                 width: 100%;
             }
@@ -61,13 +60,14 @@ html, body, .main{
 }
 
 //按钮活跃状态
-.btn-has-active{
-    &:active{
+.btn-has-active {
+    &:active {
         transform-origin: 50% 50%;
         transform: scale(0.95);
     }
 }
-.click_for_img-btn{
+
+.click_for_img-btn {
     &:after {
         content: "";
         position: absolute;
@@ -75,12 +75,11 @@ html, body, .main{
         top: 0;
         width: 100%;
         height: 100%;
-      }
-
+    }
 }
 
 //小弹窗样式
-.info{
+.info {
     $info-width: 80%;
     z-index: 100;
     display: none;
@@ -91,7 +90,7 @@ html, body, .main{
     top: 10%;
     padding: .8rem 1rem;
     text-align: center;
-    background-color: rgba(255,255,255,.96);
+    background-color: rgba(255, 255, 255, .96);
     color: black;
     font-size: .8rem;
     border-radius: .5rem;
@@ -105,7 +104,6 @@ html, body, .main{
 @import "./page/regist";
 @import "./page/regist-info";
 @import "./page/zhanxianxiaxian";
-
 //引入弹窗文件
 @import "./popup/rule";
 @import "./popup/subscribe";
@@ -127,9 +125,4 @@ html, body, .main{
 @import "./popup/limit-lottery";
 @import "./popup/share-suc";
 @import "./popup/same-city-info";
-
 @import "./popup/toothpaste-addressInfo";
-
-
-
-

@@ -8,9 +8,9 @@ class TipManager{
         const $dom = $(`<div class="info">${text}</div>`);
         $(".info").remove();
         $('body').append($dom);
-        $dom.showInfo();
+        $dom.show();
         setTimeout(function(){
-            $dom.hideInfo();
+            $dom.hide();
         }, delay);
     }
 

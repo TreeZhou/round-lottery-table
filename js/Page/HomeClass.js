@@ -176,6 +176,7 @@ class HomeClass extends BaseClass {
             }
         });
     }
+  
 
     initScrollListEvent() {
         Util.scrollAtBottom($("#listScrollBox")[0], () => {
@@ -358,6 +359,8 @@ class HomeClass extends BaseClass {
                     // debugger;
                     Config.observer.emit("myPrizeList", Config.myprize);
                 }
+                this.initBtnMyPrize() //我的奖品列表点击事件
+
             })
             .catch((err) => {
                 let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
@@ -437,8 +440,9 @@ class HomeClass extends BaseClass {
         }
     }
     initBtnMyPrize() {
-        $(".turntable-right").on('tap', (e) => {
+        $(".turntable-right").off().on('tap', (e) => {
             let $target = $(e.target);
+
             switch ($target.data("awardtype")) {
                 case 7:
                     Popup.sameCity.show();
@@ -470,7 +474,7 @@ class HomeClass extends BaseClass {
             }
             Config.awardData.id = $target.data("id");
         })
-        $(".award-list--toothpast-btn").on("tap", (e) => {
+        $(".award-list--toothpast-btn").off().on("tap", (e) => {
             if (Config.jumpUrlObj.awardListToothpastBtn) {
                 window.location.href = Config.jumpUrlObj.awardListToothpastBtn;
             }

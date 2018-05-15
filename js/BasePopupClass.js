@@ -7,11 +7,11 @@ class BasePopupClass extends BaseClass{
 	}
 	show(){
 		super.show();
-		this.$dom.fadeInUp();
+		// this.$dom.show();
 	}
 	hide(cb){
-		// super.hide();
-		this.$dom.fadeOutDown(cb);
+		super.hide();
+		// this.$dom.show(cb);
 	}
 }
 

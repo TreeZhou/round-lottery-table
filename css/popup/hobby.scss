@@ -1,4 +1,7 @@
 .hobby {
+    // .wrap{
+    //     width:90%!important;
+    // }
     &__item-box {
         @include display_flex(column);
         background-color: #fff;
@@ -12,20 +15,22 @@
         width: 100%;
         color: #f44341;
     }
+    $option-border-color:#e77c7a;
+    $option-text-color:#f44341;
     &__options {
-        font-size: .9rem; // text-align: center;
+        font-size: .7rem; // text-align: center;
         span {
             display: inline-block;
-            border: 2px #f44341 solid;
+            border: 2px $option-border-color solid;
             background-color: #fff;
-            border-radius: 7px;
-            padding: 5px 7px;
-            margin: 5px 0;
-            color: #f44341;
+            border-radius: 100px;
+            padding: 5px 10px;
+            margin: 8px 0;
+            color: $option-text-color;
         }
         .hobby__hobby-active {
             color: white;
-            background-color: #f44341;
+            background-color: $option-border-color;
         }
     }
     &__btn-sure {

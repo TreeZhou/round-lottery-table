@@ -23,6 +23,11 @@ class RuleClass extends BasePopupClass {
     initBtnSure() {
         this.$toothpasteBtnSure.on("tap", (e) => {
             this.hide();
+            if (Config.userInfo.chance == 0) {
+                Popup.shareThree.show();
+                
+            }
+          
         });
     }
     initBtnAddr() {

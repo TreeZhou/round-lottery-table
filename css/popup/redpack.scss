@@ -11,14 +11,13 @@
     &__btn-text--jump-url {
         @include abs_width_center(80%);
         text-align: center;
-        top: 59%;
+        top: 57%;
         .redpack__commom-text {
             font-size: .7rem;
             color: black;
         }
         .redpack__commom-text--amount {
             margin: 5px;
-            ;
             font-size: 1rem;
             color: black;
             .award-amount {

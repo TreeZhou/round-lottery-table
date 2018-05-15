@@ -115,7 +115,6 @@ let init = function () {
     Config.initFeiboAndShare(); // 创建斐波
     Config.initShareConfig(); // 注册分享事件
     // initFontSize();
-    Util.addFrend();
     initUI();
     $('.main').show();
     View.loading.show();
@@ -134,11 +133,8 @@ let init = function () {
 
 function initShowPage() {
     // //测试
-    // View.regist.show();
-    // View.home.show();
     // $('.zhanxian-box').show();
     // $('.xiaxian-box').show();
-
     // View.regist.show();
     // View.registInfo.show();
     // View.home.show();
@@ -191,32 +187,31 @@ function initShowPage() {
         return;
     }
 
-    // 第一次进入页面
-    if (!window.localStorage.getItem("firstEnter")) {
+    // // 非第一次进入页面（超过1次进入页面）
+    // if (window.localStorage.getItem("moreOneEnter")) {
+    //     if (!Config.subscribe) {
+    //         View.regist.show();
+    //         return;
+    //     }
+    //     if (!Config.userInfo.subscribe) {
+    //         View.regist.show();
+    //         return;
+    //     }
+    //     View.home.show();
+    // } else { //第一次进入页面
+    //     window.localStorage.setItem("moreOneEnter", "yes");
+    //     View.regist.show();
+    // }
+
+    if (!Config.userInfo.mobile || !Config.subscribe) {
         View.regist.show();
-        window.localStorage.setItem("firstEnter", "no");
     } else {
-        //非第一次进入页面
-        if (!Config.subscribe) {
-            View.regist.show();
-            return;
-        }
-        if (!Config.userInfo.subscribe) {
-            View.regist.show();
-            return;
-        }
         View.home.show();
     }
 
     if (Config.urlSearchObj['debug']) {
         return;
     }
-
-
-
-
-
-
 }
 
 
@@ -225,22 +220,25 @@ if (Config.debug && Config.urlSearchObj['debug']) { //当前处于调试模式
     init();
 } else if (window.localStorage.getItem(Config.userInfoStorageName)) {
     Config.userInfo = JSON.parse(window.localStorage.getItem(Config.userInfoStorageName));
-    Util.getInfo().then((res) => {
-        return Promise.resolve(Util.getSubscribe())
-    }).then((res) => {
-        init();
-    });
-    // .catch((res) => {
-    //     console.log("获取信息发生错误：" + res)
-    // })
-} else if (Config.wechat.getQuery('code')) { //项目链接来自于授权完成后的跳转
+    Util.getInfo().then(() => {
+            if (Config.urlSearchObj['from_openid']) {
+                window.localStorage.setItem(Config.hasFromOpenidStorageName, Config.urlSearchObj['from_openid']);
+            }
+            return Promise.resolve(Util.getSubscribe())
+        }).then((res) => {
+            init();
+        })
+        .catch((res) => {
+            console.log("获取信息发生错误：" + res)
+        })
+} else if (Config.wechat.getQuery('send_openid')) { //项目链接来自于授权完成后的跳转
     let params = {
         data: {
             code: Config.urlSearchObj['code'],
             cnl: Config.urlSearchObj['cnl'],
+            send_openid:Config.urlSearchObj['send_openid']
         }
     }
-    // return;
     Promise.resolve(Api.login(params)).then((res) => {
         if (!res.success) {
             Config.wechat.goAuth('snsapi_userinfo', 'STATE', Config.wechat.filter());
@@ -248,6 +246,9 @@ if (Config.debug && Config.urlSearchObj['debug']) { //当前处于调试模式
         }
         window.localStorage.setItem(Config.userInfoStorageName, JSON.stringify(res.result));
         Config.userInfo = res.result;
+        if (Config.urlSearchObj['from_openid']) {
+            window.localStorage.setItem(Config.hasFromOpenidStorageName, Config.urlSearchObj['from_openid']);
+        }
         return Promise.resolve(Util.getSubscribe())
     }).then(() => {
         init();
@@ -263,9 +264,19 @@ if (Config.debug && Config.urlSearchObj['debug']) { //当前处于调试模式
         } catch (e) {}
         return alert(errMsg);
     })
-
-} else { //用户首次打开该项目需要完成授权
-    Config.wechat.goAuth('snsapi_userinfo', 'STATE', Config.wechat.filter());
+} else if (Config.wechat.getQuery('code')) { //用户首次打开该项目需要完成授权
+    Config.wechatForRedpack.getOpenid(function (err, res) {
+        if (err) {
+            Config.wechatForRedpack.goAuth('snsapi_base', 'STATE', Config.wechatForRedpack.filter(["code"]));
+            return;
+        }
+        let openid = res;
+        Config.wechat.goAuth('snsapi_userinfo', 'STATE', Config.wechat.filter(["code"], {
+            "send_openid": openid
+        }))
+    });
+} else { //静默授权
+    Config.wechatForRedpack.goAuth('snsapi_base', 'STATE', Config.wechatForRedpack.filter());
 }
 
 $(function () {
@@ -337,4 +348,7 @@ $(function () {
     });
     overscroll(document.querySelectorAll('.scrollable'));
 });
-Util.bgFullPage([".regist__bg", ".regist-info__bg"]);
+Util.bgFullPage([".regist__bg", ".regist__box", , ".regist-info__bg", ".regist-info__box"]);
+
+
+

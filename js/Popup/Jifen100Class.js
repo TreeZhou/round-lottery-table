@@ -18,21 +18,26 @@ class RuleClass extends BasePopupClass {
     }
     initBtnClose() {
         this.$jifen100BtnClose.on("tap", (e) => {
-            this.hide();   try {
+            this.hide();
+            try {
                 fiboSDK.btnClick('jifen100-btn-close', '中奖100积分-关闭');
             } catch (e) {}
         });
     }
     initBtnSure() {
         this.$jifen100BtnSure.on("tap", (e) => {
-            this.hide();  try {
+            this.hide();
+            if (Config.userInfo.chance == 0) {
+                Popup.shareThree.show();
+            }
+            try {
                 fiboSDK.btnClick('jifen100-btn-again', '中奖100积分-再来一次');
             } catch (e) {}
         });
     }
     initBtnJumpUrl() {
         this.$jifen100BtnJumpUrl.on("tap", (e) => {
-          
+
             window.location.href = Config.jumpUrlObj.Jifen100Btn;
             try {
                 fiboSDK.btnClick('jifen100-btn-go-now', '中奖100积分-直接兑换');

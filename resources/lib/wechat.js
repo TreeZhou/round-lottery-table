@@ -14,6 +14,7 @@
     proto.goAuth = function (scope, state, redirectUri) {
       window.location.href = `${host}/web/auth/${this.appid}?scope=${scope}&state=${state}&redirecturi=${encodeURIComponent(redirectUri)}`
     }
+    // 静默授权: snsapi_base, 显式授权: snsapi_userinfo
     /**
      * 微信jssdk初始化
      * @param op

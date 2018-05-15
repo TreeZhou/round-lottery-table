@@ -1,12 +1,32 @@
 .regist {
+    overflow: scroll;
     &__bg {
+        width: 100%;
+    }
+    &__box {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        font-size: 0;
+    }
+    &__logo {
+        position: absolute;
+        left: 5%;
+        top: 2%;
+        width: 27%;
+    }
+    &__bottom {
+        position: absolute;
+        left: 0;
+        bottom: 2%;
         width: 100%;
     }
     &__btn-regist {
         @include abs_width_center(56%);
         bottom: 9%;
-        img{
-            width:100%;
+        img {
+            width: 100%;
         }
     }
 }

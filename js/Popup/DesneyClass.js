@@ -20,6 +20,10 @@ class RuleClass extends BasePopupClass {
     initBtnSure() {
         this.$desneyBtnSure.on("tap", (e) => {
             this.hide();
+            if (Config.userInfo.chance == 0) {
+                Popup.shareThree.show();
+
+            }
         });
     }
     show() {

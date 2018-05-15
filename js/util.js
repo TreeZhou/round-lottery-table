@@ -328,9 +328,9 @@ exports.getSubscribe = function () {
 	return new Promise((resolve, reject) => {
 		Config.wechat.getSubscribe(Config.userInfo.openid, function (err, res) { //根据用户的微信个人信息获取用户是否已关注公众号
 			if (err) {
-				return ;
+				reject(err);
+				return;
 				// return alert(err);
-				
 			}
 			Config.subscribe = res.subscribe;
 			resolve();
@@ -344,30 +344,23 @@ exports.getInfo = function () {
 			openid: Config.userInfo.openid,
 		}
 	}
-	return Promise.resolve(Api.getInfo(params)).then((res) => {
+	return new Promise((resolve, reject) => {
+		Promise.resolve(Api.getInfo(params)).then((res) => {
 			if (!res.success) {
-				return Promise.reject(res);
+				reject(res)
+				return;
 			}
 			Config.userInfo = res.result;
+			resolve();
+		})
+	})
 
-		})
-		.catch((err) => {
-			let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
-			try {
-				Raven.captureMessage(`<更新用户信息>失败`, {
-					level: 'error',
-					extra: {
-						data: errMsg
-					}
-				});
-			} catch (e) {}
-			// return alert(errMsg);
-		})
+
 }
 exports.getSystemStarus = function () {
 	return Promise.resolve(Api.config()).then((res) => {
 		if (!res.success) {
-			return ;
+			return;
 		}
 		Config.systemStatus = res.result;
 	}).catch((err) => {
@@ -384,34 +377,28 @@ exports.getSystemStarus = function () {
 	})
 }
 exports.addFrend = function () {
-
-	if (!Config.urlSearchObj['from_openid']) {
-		return;
-	}
-	if (window.localStorage.getItem("firstEnter")) {
-		return;
-	}
 	let params = {
 		data: {
 			openid: Config.userInfo.openid,
-			from_openid: Config.urlSearchObj['from_openid']
+			from_openid: null
 		}
+	}
+	if (Config.urlSearchObj['from_openid']) {
+		params.data.from_openid = Config.urlSearchObj['from_openid'];
+	} else if (window.localStorage.getItem(Config.hasFromOpenidStorageName)) {
+		params.data.from_openid = window.localStorage.getItem(Config.hasFromOpenidStorageName);
+	}
+	if (!params.data.from_openid) {
+		return;
+	}
+	if (window.localStorage.getItem("hasSendFriend")) {
+		return;
 	}
 	Promise.resolve(Api.addFriend(params)).then((res) => {
 		if (!res.success) {
-			return ;
+			return;
 		}
-		console.log("增加朋友：", res)
-	}).catch((err) => {
-		let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
-		try {
-			Raven.captureMessage(`<添加好友>失败`, {
-				level: 'error',
-				extra: {
-					data: errMsg
-				}
-			});
-		} catch (e) {}
-		// return alert(errMsg);
+		window.localStorage.setItem("hasSendFriend", "yes");
+		console.log("增加朋友：", res);
 	})
 }

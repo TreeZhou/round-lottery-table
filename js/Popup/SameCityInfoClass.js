@@ -87,7 +87,7 @@ class RuleClass extends BasePopupClass {
             TipManager.show("请先输入手机号码");
             return false;
         }
-        if (!/^1[345678]\d{9}$/i.test(this.submitData.mobile)) {
+        if (!/^1[23456789]\d{9}$/i.test(this.submitData.mobile)) {
             TipManager.show("你输入的不是手机号码");
             return false;
         }
@@ -118,7 +118,6 @@ class RuleClass extends BasePopupClass {
             fiboSDK.saveFormInfo(fForm, '同城活动类别选择页面-表单信息');
         } catch (e) {}
         this.submitting = true;
-        //测试--接口为配置
         Promise.resolve(Api.putActive(params)).then((res) => {
             if (!res.success) {
                 TipManager.show(res.msg)
@@ -126,7 +125,6 @@ class RuleClass extends BasePopupClass {
             }
             TipManager.show("提交成功");
             this.hide();
-            //测试--接口为配置
         }).catch((err) => {
             let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
             try {
@@ -149,7 +147,6 @@ class RuleClass extends BasePopupClass {
 
     hide() {
         View.home.initMyPrizeList(1); //渲染列表--我的奖品
-        
         super.hide();
     }
 

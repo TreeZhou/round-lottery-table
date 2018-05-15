@@ -6,6 +6,8 @@ class RuleClass extends BasePopupClass {
     }
 
     init() {
+        this.kidArray = [];
+
         this.$kidOptionsBox = this.$dom.find("#kidOptionsBox");
         this.$kidBtnSure = this.$dom.find("#kidBtnSure");
         this.$kidBtnClose = this.$dom.find("#kidBtnClose");
@@ -23,9 +25,17 @@ class RuleClass extends BasePopupClass {
     }
     initBtnSure() {
         this.$kidBtnSure.on("tap", () => {
-            let kid = this.$kidOptionsBox.find("[class='kid__kid-active']").data("index");
-            View.registInfo.submitData.kid = kid;
-            $("#kidType").val(kid);
+            this.kidArray = [];
+            let kid = this.$kidOptionsBox.find("[class='kid__kid-active']").text();
+            if (!kid) {
+                View.registInfo.submitData.kid = null;
+                $("#kidType").text("请选择");
+            } else {
+                this.kidArray.push(this.$kidOptionsBox.find("[class='kid__kid-active']").data('index'))
+                View.registInfo.submitData.kid = kid;
+                $("#kidType").text(kid);
+            }
+
             this.hide();
         });
     }

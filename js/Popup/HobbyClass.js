@@ -5,11 +5,13 @@ class RuleClass extends BasePopupClass {
         // viewAdapt.push(".rule .box", config.ratio);
     }
 
-    
+
     init() {
         this.$hobbyOptionsBox = this.$dom.find("#hobbyOptionsBox");
         this.$hobbyBtnSure = this.$dom.find("#hobbyBtnSure");
         this.$hobbyBtnClose = this.$dom.find("#hobbyBtnClose");
+
+        this.hobbysArray = [];
 
         this.initBtnClose();
         this.initBtnSure();
@@ -23,14 +25,22 @@ class RuleClass extends BasePopupClass {
     }
     initBtnSure() {
         this.$hobbyBtnSure.on("tap", () => {
+            this.hobbysArray = [];
             let array = this.$hobbyOptionsBox.find("[class='hobby__hobby-active']");
             let hobbyStr = "";
             $.each(array, (index, ele) => {
                 hobbyStr = hobbyStr + "、" + $(ele).text();
+                this.hobbysArray.push($(ele).data('index'));
             })
-            hobbyStr = hobbyStr.replace(/\、/, "")
-            View.registInfo.submitData.hobby = hobbyStr
-            $("#hobbyText").text(hobbyStr);
+            hobbyStr = hobbyStr.replace(/\、/, "");
+            if (!hobbyStr) {
+                $("#hobbyText").text("请选择");
+                View.registInfo.submitData.hobby = null;
+            } else {
+                View.registInfo.submitData.hobby = hobbyStr;
+                $("#hobbyText").text(hobbyStr);
+
+            }
             this.hide();
         });
     }

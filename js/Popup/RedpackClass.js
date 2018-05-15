@@ -9,7 +9,7 @@ class RuleClass extends BasePopupClass {
         this.$redpackBtnclose = this.$dom.find("#redpackBtnClose");
         this.$redpackBtnSure = this.$dom.find("#redpackBtnSure");
         this.$redpackAmount = this.$dom.find("#redpackAmount");
-        
+
         this.initBtnClose();
         this.initBtnSure();
 
@@ -22,13 +22,15 @@ class RuleClass extends BasePopupClass {
     initBtnSure() {
         this.$redpackBtnSure.on("tap", (e) => {
             this.hide();
+            if (Config.userInfo.chance == 0) {
+                Popup.shareThree.show();
+
+            }
         });
     }
     initDate() {
-        //测试
-        this.$redpackAmount.text(Config.awardData.amount/100+"元红包");
-        //测试
-        
+        this.$redpackAmount.text(Config.awardData.amount / 100 + "元红包");
+
     }
     show() {
         this.initDate();

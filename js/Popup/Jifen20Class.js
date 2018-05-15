@@ -27,6 +27,10 @@ class RuleClass extends BasePopupClass{
     initBtnSure() {
         this.$jifen20BtnSure.on("tap", (e) => {
             this.hide();
+            if (Config.userInfo.chance == 0) {
+                Popup.shareThree.show();
+                
+            }
             try {
                 fiboSDK.btnClick('jifen20-btn-again', '中奖20积分-再来一次');
             } catch (e) {}
@@ -34,6 +38,7 @@ class RuleClass extends BasePopupClass{
     }
     initBtnJumpUrl() {
         this.$jifen20BtnJumpUrl.on("tap", (e) => {
+            
             window.location.href = Config.jumpUrlObj.Jifen20Btn;
          
             try {

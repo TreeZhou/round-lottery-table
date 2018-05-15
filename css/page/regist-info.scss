@@ -1,6 +1,25 @@
 .regist-info {
+    overflow: scroll;
+    background-color:#C91B1C;
     &__bg {
         width: 100%;
+    }
+    &__box {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%; 
+        // font-size: 0;
+    }
+    &__logo {
+        position: absolute;
+        left: 5%;
+        top: 2%;
+        width: 27%;
+    }
+    &__top-title {
+        @include abs_width_center(88%);
+        top: 9%; // opacity: .3;
     }
     &__item-box {
         @include abs_width_center(90%);
@@ -19,7 +38,6 @@
             }
             .regist-info__form-item-select {
                 @include abs_vertical_middle;
-                direction: rtl;
                 right: 10%;
                 box-sizing: border-box;
                 width: 55%;
@@ -31,13 +49,13 @@
                 border: none;
                 outline: none;
                 border-radius: 3px; // 清除默认的样式
-                // -moz-appearance: none;
-                /* Firefox */
-                // -webkit-appearance: none;
-                /* Safari 和 Chrome */
                 appearance: none;
                 padding: 0;
                 font-size: 14px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
             }
         }
         &__item-hobby {}
@@ -55,6 +73,7 @@
                 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
                 overflow: scroll;
                 text-align: right;
+                font-size: 1rem;
                 &::placeholder {
                     color: #b7b7b7;
                     font-size: .7em;
@@ -74,6 +93,8 @@
                 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
                 overflow: scroll;
                 text-align: left;
+                font-size: 1rem;
+                
                 &::placeholder {
                     color: #b7b7b7;
                     font-size: .7em;
@@ -81,14 +102,14 @@
             }
             .item-box__btn-send-code {
                 @include abs_vertical_middle();
-                width:4rem;
+                width: 4rem;
                 font-size: .7rem;
                 border-radius: 3px;
-                border:1px solid $theme-color;
-                color:$theme-color;
+                border: 1px solid $theme-color;
+                color: $theme-color;
                 text-align: center;
                 right: $item-box__item-right;
-                padding:5px;
+                padding: 5px;
             }
         }
         &__btn-submit {

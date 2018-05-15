@@ -43,11 +43,17 @@ class HomeClass extends BaseClass {
     }
     initBtnHobby() {
         this.$btnHobby.on("tap", () => {
+            Popup.hobby.$hobbyOptionsBox.find('span').removeClass("hobby__hobby-active");
+            Popup.hobby.hobbysArray.forEach(element => {
+                Popup.hobby.$hobbyOptionsBox.find(`[data-index="${element}"]`).addClass("hobby__hobby-active")
+            });
             Popup.hobby.show();
         });
     }
     initBtnKid() {
         this.$btnKid.on("tap", () => {
+            Popup.kid.$kidOptionsBox.find('span').removeClass("kid__kid-active");
+            Popup.kid.$kidOptionsBox.find(`[data-index="${Popup.kid.kidArray[0]}"]`).addClass("kid__kid-active")
             Popup.kid.show();
         });
     }
@@ -153,7 +159,7 @@ class HomeClass extends BaseClass {
     }
     checkKid() {
         if (this.submitData.kid == null) {
-            TipManager.show("请选择您孩子的年龄");
+            TipManager.show("请选择您的情况");
             return false;
         }
         return true;
@@ -165,7 +171,7 @@ class HomeClass extends BaseClass {
             TipManager.show("请先输入手机号码");
             return false;
         }
-        if (!/^1[345678]\d{9}$/i.test(this.submitData.mobile)) {
+        if (!/^1[23456789]\d{9}$/i.test(this.submitData.mobile)) {
             TipManager.show("你输入的不是手机号码");
             return false;
         }
@@ -223,7 +229,10 @@ class HomeClass extends BaseClass {
                 return
             }
             TipManager.show("注册成功");
+            this.hide();
             View.home.show();
+            Util.addFrend();
+
         }).catch((err) => {
             let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
             try {

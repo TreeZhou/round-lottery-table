@@ -1,6 +1,6 @@
-class RuleClass extends BasePopupClass{
+class RuleClass extends BasePopupClass {
 
-    constructor(str){
+    constructor(str) {
         super(str);
         // viewAdapt.push(".rule .box", config.ratio);
     }
@@ -26,6 +26,9 @@ class RuleClass extends BasePopupClass{
     initBtnSure() {
         this.$Jifen10BtnSure.on("tap", (e) => {
             this.hide();
+            if (Config.userInfo.chance == 0) {
+                Popup.shareThree.show();
+            }
             try {
                 fiboSDK.btnClick('jifen10-btn-again', '中奖10积分-再来一次');
             } catch (e) {}
@@ -33,6 +36,7 @@ class RuleClass extends BasePopupClass{
     }
     initBtnJumpUrl() {
         this.$Jifen10BtnJumpUrl.on("tap", (e) => {
+            
             window.location.href = Config.jumpUrlObj.Jifen10Btn;
             try {
                 fiboSDK.btnClick('jifen10-btn-go-now', '中奖10积分-直接兑换');
@@ -40,11 +44,11 @@ class RuleClass extends BasePopupClass{
         });
 
     }
-    show(){
+    show() {
         super.show();
     }
 
-    hide(){
+    hide() {
         super.hide();
     }
 
