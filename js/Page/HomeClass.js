@@ -4,6 +4,14 @@ class HomeClass extends BaseClass {
     }
     init() {
         //声明变量
+
+        this.timerSpin = null;
+        this.spinangle = 0;
+        this.spinSpeed = 15; //空转的转圈速度，数值越高转的越慢
+        this.addSpinangle = 10; //固定参数请勿调动
+        this.duration = 3000; //真转的转圈时长，数值越高转的越慢
+        this.hasGetAwardDate = false;
+        this.stopSpinLottery = false;
         //转盘
         this.tablePosition = [90, 180, 0, 135, 225, 315, 270, 45];
         this.rotating = false;
@@ -50,6 +58,7 @@ class HomeClass extends BaseClass {
         this.initMyPrizeList(1); //渲染列表--我的奖品
 
         this.initScrollListEvent();
+        // this.spinLottery();
     }
     initBtnRuleEvent() {
         this.$btnRule.on("tap", (e) => {
@@ -77,23 +86,26 @@ class HomeClass extends BaseClass {
         //测试
         //测试
         // var key = 7;
-        // !this.rotating && this.rotateFunc(this.tablePosition[key - 1], key);
+        // this.rotateFunc(this.tablePosition[key - 1], key);
         // return;
         //测试
         //正式
+
+
+        if (Config.userInfo.chance == 0) {
+            this.$lotteryTimes.text(Config.userInfo.chance);
+            Popup.shareThree.show();
+            return;
+        }
+
         if (this.rotating) {
             return;
         }
         this.rotating = true;
 
-        if (Config.userInfo.chance == 0) {
-            this.$lotteryTimes.text(Config.userInfo.chance);
-            Popup.shareThree.show();
-            this.rotating = false;
-            return;
-        }
         if (Config.userInfo.chance > 0) {
-
+            this.hasGetAwardDate = false;
+            this.spinLottery(); //空转
             let params = {
                 data: {
                     openid: Config.userInfo.openid
@@ -102,24 +114,27 @@ class HomeClass extends BaseClass {
             Promise.resolve(Api.lottery(params)).then((res) => {
                 if (res.error_code == -1100) {
                     Popup.limitLottery.show();
+                    this.stopSpinLottery = true;
                     this.rotating = false;
                     return;
                 }
                 if (res.error_code == -1008) {
                     TipManager.show("网络繁忙");
+                    this.stopSpinLottery = true;
                     this.rotating = false;
                     return;
                 }
                 if (!res.success) {
                     TipManager.show(res.msg);
+                    this.stopSpinLottery = true;
                     this.rotating = false;
                     return;
                 }
                 Config.awardData = res.result;
-                let award_id = Config.awardData.award_id;
-                this.rotateFunc(this.tablePosition[award_id - 1], award_id);
+                this.hasGetAwardDate = true;
                 this.$lotteryTimes.text(--Config.userInfo.chance);
             }).catch((err) => {
+                this.stopSpinLottery = true;
                 this.rotating = false;
                 let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
                 try {
@@ -137,15 +152,14 @@ class HomeClass extends BaseClass {
         }
         //正式
 
-
     }
     //转盘转动方法
     //mun为tablePosition位置，type为中奖的奖品
     rotateFunc(num, type) {
         this.$turntableContent.rotate({
             angle: 0,
-            duration: 3000,
-            animateTo: num + 1440 + 22.5, //1440是我要让指针旋转4圈
+            duration: this.duration,
+            animateTo: num + 360 + 22.5, //1440是我要让指针旋转4圈
             callback: () => {
                 $('html, body').animate({
                     scrollTop: 0
@@ -172,11 +186,37 @@ class HomeClass extends BaseClass {
                     Popup.jifen10.show();
                 }
                 this.rotating = false;
+                this.hasGetAwardDate = false;
                 this.initMyPrizeList(1); //渲染列表--我的奖品
             }
         });
     }
-  
+    isPositiveInteger(s) { //是否为正整数
+        var re = /^[1-9]+$/;
+        return re.test(s)
+    }
+    spinLottery() {
+        this.timerSpin = setInterval(() => {
+            if (this.isPositiveInteger(this.spinangle / 360) && this.hasGetAwardDate) {
+                this.spinangle = 0;
+                clearInterval(this.timerSpin);
+                let award_id = Config.awardData.award_id;
+                this.rotateFunc(this.tablePosition[award_id - 1], award_id);
+                return;
+            }
+            if (this.isPositiveInteger(this.spinangle / 360) && this.stopSpinLottery) {
+                this.spinangle = 0;
+                clearInterval(this.timerSpin);
+                this.stopSpinLottery = false;
+                return;
+            }
+            this.spinangle = this.spinangle + this.addSpinangle;
+            this.$turntableContent.css({
+                "transform": `rotate(${this.spinangle}deg)`
+            })
+        }, this.spinSpeed);
+
+    }
 
     initScrollListEvent() {
         Util.scrollAtBottom($("#listScrollBox")[0], () => {
