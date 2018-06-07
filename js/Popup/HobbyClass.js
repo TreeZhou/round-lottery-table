@@ -29,10 +29,10 @@ class RuleClass extends BasePopupClass {
             let array = this.$hobbyOptionsBox.find("[class='hobby__hobby-active']");
             let hobbyStr = "";
             $.each(array, (index, ele) => {
-                hobbyStr = hobbyStr + "、" + $(ele).text();
+                hobbyStr = hobbyStr + ";" + $(ele).text();
                 this.hobbysArray.push($(ele).data('index'));
             })
-            hobbyStr = hobbyStr.replace(/\、/, "");
+            hobbyStr = hobbyStr.replace(/\;/, "");
             if (!hobbyStr) {
                 $("#hobbyText").text("请选择");
                 View.registInfo.submitData.hobby = null;

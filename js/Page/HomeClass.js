@@ -58,7 +58,6 @@ class HomeClass extends BaseClass {
         this.initMyPrizeList(1); //渲染列表--我的奖品
 
         this.initScrollListEvent();
-        // this.spinLottery();
     }
     initBtnRuleEvent() {
         this.$btnRule.on("tap", (e) => {
@@ -70,7 +69,6 @@ class HomeClass extends BaseClass {
     }
     initTimes() {
         this.$lotteryTimes.text(Config.userInfo.chance);
-
     }
     initBtnStart() {
 
@@ -197,6 +195,7 @@ class HomeClass extends BaseClass {
     }
     spinLottery() {
         this.timerSpin = setInterval(() => {
+            debugger;
             if (this.isPositiveInteger(this.spinangle / 360) && this.hasGetAwardDate) {
                 this.spinangle = 0;
                 clearInterval(this.timerSpin);
@@ -497,7 +496,7 @@ class HomeClass extends BaseClass {
                     } catch (e) {}
                     break;
                 case 1:
-                    Popup.desney.show();
+                    Popup.desneyMyawardList.show();
                     try {
                         fiboSDK.btnClick('home-list-btn-desney', '首页我的奖品列表-迪士尼按键');
                     } catch (e) {}
@@ -527,6 +526,7 @@ class HomeClass extends BaseClass {
 
 
     show() {
+        this.initTimes();
         this.$dom.show();
         this.initBtnMyPrize() //我的奖品列表点击事件
     }

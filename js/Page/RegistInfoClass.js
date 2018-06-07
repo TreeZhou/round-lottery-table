@@ -226,13 +226,14 @@ class HomeClass extends BaseClass {
         Promise.resolve(Api.register(params)).then((res) => {
             if (!res.success) {
                 alert(res.msg);
-                return
+                return Promise.reject(res);
             }
             TipManager.show("注册成功");
             this.hide();
-            View.home.show();
             Util.addFrend();
-
+            return Util.getInfo();
+        }).then(() => {
+            View.home.show();
         }).catch((err) => {
             let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
             try {

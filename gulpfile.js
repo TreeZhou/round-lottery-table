@@ -40,10 +40,11 @@ Object.keys(proxyTable).forEach(function (context) {
 gulp.task('browser-sync', ['html', 'resources', 'sass', 'script'], function () {
 	browserSync.init({
 		server: {
-			middleware: proxyArr
+			middleware: proxyArr,
+			
 		},
-		
-		startPath: 'app/?debug=true' //打开的位置
+		port:3004,
+		startPath: 'app/?debug=true', //打开的位置
 	});
 	//监听文件的变化
 	gulp.watch("index.html", ['html']);
@@ -164,3 +165,6 @@ gulp.task('moveresource', function () {
 });
 
 gulp.task('default', ['browser-sync']);
+gulp.task('aa', function () {
+	console.log("dddddd",notify.onError('Error: <%= error.message %>'))
+})

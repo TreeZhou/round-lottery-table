@@ -1,19 +1,30 @@
-class RuleClass extends BasePopupClass{
+class RuleClass extends BasePopupClass {
 
-    constructor(str){
+    constructor(str) {
         super(str);
         // viewAdapt.push(".rule .box", config.ratio);
     }
 
-    init(){
-        
+    init() {
+        this.$btnClose = this.$dom.find('.box')
+        this.btnCloseEvent();
     }
+    btnCloseEvent() {
+        this.$btnClose.on("tap", (e) => {
+            if (e.target == this.$btnClose[0]) {
+                this.hide();
 
-    show(){
+            }
+
+        })
+
+
+    }
+    show() {
         super.show();
     }
 
-    hide(){
+    hide() {
         super.hide();
     }
 

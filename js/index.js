@@ -132,6 +132,7 @@ let init = function () {
 }
 
 function initShowPage() {
+
     // //测试
     // $('.zhanxian-box').show();
     // $('.xiaxian-box').show();
@@ -155,7 +156,7 @@ function initShowPage() {
     // Popup.jifen20.show();
     // Popup.jifen10.show();
     // Popup.shareThree.show();
-    // Popup.limitShare.show();
+    // Popup.limitLottery.show();
     // Popup.rule.show();
     // Popup.shareSuc.show();
     // Popup.sameCityInfo.show();
@@ -217,6 +218,7 @@ function initShowPage() {
 
 // 系统进行初始化
 if (Config.debug && Config.urlSearchObj['debug']) { //当前处于调试模式
+  
     init();
 } else if (window.localStorage.getItem(Config.userInfoStorageName)) {
     Config.userInfo = JSON.parse(window.localStorage.getItem(Config.userInfoStorageName));
@@ -231,17 +233,17 @@ if (Config.debug && Config.urlSearchObj['debug']) { //当前处于调试模式
         .catch((res) => {
             console.log("获取信息发生错误：" + res)
         })
-} else if (Config.wechat.getQuery('send_openid')) { //项目链接来自于授权完成后的跳转
+} else if (Config.wechat.getQuery('send_openid') && Config.wechat.getQuery('code')) { //项目链接来自于授权完成后的跳转
     let params = {
         data: {
             code: Config.urlSearchObj['code'],
             cnl: Config.urlSearchObj['cnl'],
-            send_openid:Config.urlSearchObj['send_openid']
+            send_openid: Config.urlSearchObj['send_openid']
         }
     }
     Promise.resolve(Api.login(params)).then((res) => {
         if (!res.success) {
-            Config.wechat.goAuth('snsapi_userinfo', 'STATE', Config.wechat.filter());
+            Config.wechat.goAuth('snsapi_userinfo', 'STATE', Config.wechat.filter(['code']));
             return;
         }
         window.localStorage.setItem(Config.userInfoStorageName, JSON.stringify(res.result));
@@ -349,6 +351,3 @@ $(function () {
     overscroll(document.querySelectorAll('.scrollable'));
 });
 Util.bgFullPage([".regist__bg", ".regist__box", , ".regist-info__bg", ".regist-info__box"]);
-
-
-

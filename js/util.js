@@ -351,6 +351,7 @@ exports.getInfo = function () {
 				return;
 			}
 			Config.userInfo = res.result;
+			
 			resolve();
 		})
 	})

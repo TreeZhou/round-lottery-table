@@ -4,8 +4,10 @@
         width:75%;
     }
     &__btn-close {
-        @include abs_width_center(12%);
-        bottom: -50px;
+        position: absolute;
+        width:12%;
+        top: 0%;
+        right:-5%;
         img {
             width: 100%;
         }

@@ -13,8 +13,10 @@
         }
     }
     &__btn-close {
-        @include abs_width_center(12%);
-        bottom: -50px;
+        position: absolute;
+        width:13%;
+        top: -25%;
+        right:-5%;
         img {
             width: 100%;
         }

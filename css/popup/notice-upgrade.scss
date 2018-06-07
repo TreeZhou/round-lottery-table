@@ -24,8 +24,10 @@
         color:#f44341;
     }
     &__btn-close{
-        @include abs_width_center(13%);
-        bottom:-60px;
+        position: absolute;
+        width:13%;
+        top: -20%;
+        right:-5%;
         img{
             width:100%;
         }
