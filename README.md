@@ -1,6 +1,31 @@
-# To start
+# 技术要点
+圆形抽奖转盘工具    
+ relevant file: lotteryClass.js
+- 适用于8个奖品的圆形转盘的
+- 需要引入以下2个文件jquery-3.1.1.min.js,,jQueryRotate
+- 引入lotteryClass类文件
+- 定义空转函数和结束函数
+- 实例化同时传入参数
+- 参数：
+selectorStartBtn, selectorContent, spinFunc, endFunc, [spinSpeed], [turnDuration]   
+开始按键选择器，转动的转盘选择器，空转函数，结束函数，空转速度(默认为25ms)，真转持续时间（默认3000ms）
 
-这是一个由 Gulp 构建工具搭建的项目模板，适用于简单的H5展示网页开发，包含了 Loading页面、普通页面、弹窗页面等。
+```
+ const lotteryClass = require("../lotteryClass")
+ function spinFunc() {
+     if (0) {
+         lottery.stopSpinMethod(); 停止空转
+         return;
+     }
+     lottery.startTrueRotateMethod(1); 开始真转，参数为转盘停止的位置,转盘上中线为起点，左边第一个为1
+ }
+ function endFunc() {
+     console.log("转盘结束")
+ }
+ let lottery = new lotteryClass("#turntable-start","#turntable-content",spinFunc, endFunc,25,3000);
+
+```
+# To start 
 
 ``` bash
 # install dependencies

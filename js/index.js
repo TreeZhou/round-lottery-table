@@ -138,7 +138,7 @@ function initShowPage() {
     // $('.xiaxian-box').show();
     // View.regist.show();
     // View.registInfo.show();
-    // View.home.show();
+    View.home.show();
     // Popup.subscribe.show();
     // Popup.desneyMyawardList.show();
     // Popup.hobby.show();
@@ -165,54 +165,38 @@ function initShowPage() {
 
     // 正式
 
-    //下线页面
-    if (!Config.systemStatus.is_active) {
-        $('.xiaxian-box').show();
-        return;
-    }
-    //占线页面
-    if (Config.systemStatus.is_warn) {
-        $('.zhanxian-box').show();
-        return;
-    }
-    //活动结束页面
-    if (Config.systemStatusMyself.activeEnd) {
-        View.regist.show();
-        Popup.noticeActEnd.show();
-        return;
-    }
-    //活动升级页面
-    if (Config.systemStatusMyself.upgrade) {
-        View.regist.show();
-        Popup.noticeUpgrade.show();
-        return;
-    }
-
-    // // 非第一次进入页面（超过1次进入页面）
-    // if (window.localStorage.getItem("moreOneEnter")) {
-    //     if (!Config.subscribe) {
-    //         View.regist.show();
-    //         return;
-    //     }
-    //     if (!Config.userInfo.subscribe) {
-    //         View.regist.show();
-    //         return;
-    //     }
-    //     View.home.show();
-    // } else { //第一次进入页面
-    //     window.localStorage.setItem("moreOneEnter", "yes");
+    // //下线页面
+    // if (!Config.systemStatus.is_active) {
+    //     $('.xiaxian-box').show();
+    //     return;
+    // }
+    // //占线页面
+    // if (Config.systemStatus.is_warn) {
+    //     $('.zhanxian-box').show();
+    //     return;
+    // }
+    // //活动结束页面
+    // if (Config.systemStatusMyself.activeEnd) {
     //     View.regist.show();
+    //     Popup.noticeActEnd.show();
+    //     return;
+    // }
+    // //活动升级页面
+    // if (Config.systemStatusMyself.upgrade) {
+    //     View.regist.show();
+    //     Popup.noticeUpgrade.show();
+    //     return;
     // }
 
-    if (!Config.userInfo.mobile || !Config.subscribe) {
-        View.regist.show();
-    } else {
-        View.home.show();
-    }
+    // if (!Config.userInfo.mobile || !Config.subscribe) {
+    //     View.regist.show();
+    // } else {
+    //     View.home.show();
+    // }
 
-    if (Config.urlSearchObj['debug']) {
-        return;
-    }
+    // if (Config.urlSearchObj['debug']) {
+    //     return;
+    // }
 }
 
 

@@ -19,11 +19,11 @@ const proxyMiddleware = require('http-proxy-middleware');
 const CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 //配置请求的地址
 const proxyTable = {
-	'/api': {
-		target: 'http://www.zbzdcy.com/redFans7',
-		changeOrigin: true,
-		logLevel: 'debug'
-	}
+	// '/api': {
+	// 	target: 'http://www.zbzdcy.com/redFans7',
+	// 	changeOrigin: true,
+	// 	logLevel: 'debug'
+	// }
 }
 
 const proxyArr = [];

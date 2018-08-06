@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Echo",
+  "author": "https://github.com/TreeZhou",
   "license": "ISC",
   "dependencies": {
     "babel-loader": "^6.2.10",

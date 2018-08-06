@@ -351,7 +351,7 @@ exports.getInfo = function () {
 				return;
 			}
 			Config.userInfo = res.result;
-			
+
 			resolve();
 		})
 	})
@@ -359,6 +359,10 @@ exports.getInfo = function () {
 
 }
 exports.getSystemStarus = function () {
+	if (Config.urlSearchObj['debug']) {
+
+		return Promise.resolve();
+	}
 	return Promise.resolve(Api.config()).then((res) => {
 		if (!res.success) {
 			return;

@@ -109,6 +109,21 @@ class HomeClass extends BaseClass {
                     openid: Config.userInfo.openid
                 }
             }
+            if (Config.urlSearchObj['debug']) {
+                let randomNum = function (Min, Max) {
+                    var Range = Max - Min;
+                    var Rand = Math.random();
+                    //四舍五入,Min <= num <= Man
+                    var num = Min + Math.round(Rand * Range);
+                    return num;
+                }
+                Config.awardData = {
+                    award_id: randomNum(1, 8)
+                };
+                this.hasGetAwardDate = true;
+                this.$lotteryTimes.text(--Config.userInfo.chance);
+                return;
+            }
             Promise.resolve(Api.lottery(params)).then((res) => {
                 if (res.error_code == -1100) {
                     Popup.limitLottery.show();
@@ -195,7 +210,6 @@ class HomeClass extends BaseClass {
     }
     spinLottery() {
         this.timerSpin = setInterval(() => {
-            debugger;
             if (this.isPositiveInteger(this.spinangle / 360) && this.hasGetAwardDate) {
                 this.spinangle = 0;
                 clearInterval(this.timerSpin);
@@ -259,7 +273,12 @@ class HomeClass extends BaseClass {
 
     }
     initWinnerList(page) {
-        // debugger;
+        if (Config.urlSearchObj['debug']) {
+           
+            return;
+        }
+        
+
         page == 1 && this.$tab1.empty();
         //正式       
         let params = {
@@ -315,7 +334,10 @@ class HomeClass extends BaseClass {
 
     }
     initMyFrendsList(page) {
-        // debugger;
+        if (Config.urlSearchObj['debug']) {
+
+            return;
+        }
         page == 1 && this.$tab2.empty();
         //正式       
         let params = {
@@ -371,7 +393,9 @@ class HomeClass extends BaseClass {
 
     }
     initMyPrizeList(page) {
-        // debugger;
+        if (Config.urlSearchObj['debug']) {
+            return;
+        }
         page == 1 && this.$tab3.empty();
         //正式       
         let params = {
