@@ -37,7 +37,7 @@ class RuleClass extends BasePopupClass {
     initBtnJumpUrl() {
         this.$Jifen10BtnJumpUrl.on("tap", (e) => {
             
-            window.location.href = Config.jumpUrlObj.Jifen10Btn;
+            // window.location.href = Config.jumpUrlObj.Jifen10Btn;
             try {
                 fiboSDK.btnClick('jifen10-btn-go-now', '中奖10积分-直接兑换');
             } catch (e) {}

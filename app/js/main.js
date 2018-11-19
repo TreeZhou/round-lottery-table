@@ -2677,9 +2677,7 @@
 	        }
 	    }, {
 	        key: "initDate",
-	        value: function initDate() {
-	            this.$redpackAmount.text(Config.awardData.amount / 100 + "元红包");
-	        }
+	        value: function initDate() {}
 	    }, {
 	        key: "show",
 	        value: function show() {
@@ -2765,8 +2763,6 @@
 	        key: "initBtnJumpUrl",
 	        value: function initBtnJumpUrl() {
 	            this.$jifen100BtnJumpUrl.on("tap", function (e) {
-	
-	                window.location.href = Config.jumpUrlObj.Jifen100Btn;
 	                try {
 	                    fiboSDK.btnClick('jifen100-btn-go-now', '中奖100积分-直接兑换');
 	                } catch (e) {}
@@ -2856,8 +2852,6 @@
 	        key: "initBtnJumpUrl",
 	        value: function initBtnJumpUrl() {
 	            this.$jifen50BtnJumpUrl.on("tap", function (e) {
-	
-	                window.location.href = Config.jumpUrlObj.Jifen50Btn;
 	                try {
 	                    fiboSDK.btnClick('jifen50-btn-go-now', '中奖50积分-直接兑换');
 	                } catch (e) {}
@@ -2948,8 +2942,6 @@
 	        value: function initBtnJumpUrl() {
 	            this.$jifen20BtnJumpUrl.on("tap", function (e) {
 	
-	                window.location.href = Config.jumpUrlObj.Jifen20Btn;
-	
 	                try {
 	                    fiboSDK.btnClick('jifen20-btn-go-now', '中奖20积分-直接兑换');
 	                } catch (e) {}
@@ -3039,8 +3031,6 @@
 	        key: "initBtnJumpUrl",
 	        value: function initBtnJumpUrl() {
 	            this.$Jifen10BtnJumpUrl.on("tap", function (e) {
-	
-	                window.location.href = Config.jumpUrlObj.Jifen10Btn;
 	                try {
 	                    fiboSDK.btnClick('jifen10-btn-go-now', '中奖10积分-直接兑换');
 	                } catch (e) {}
@@ -3186,8 +3176,6 @@
 	    }, {
 	        key: "goToSubmit",
 	        value: function goToSubmit() {
-	            var _this5 = this;
-	
 	            var params = {
 	                data: this.submitData
 	            };
@@ -3202,26 +3190,9 @@
 	                fiboSDK.saveFormInfo(fForm, '提交牙膏收件人信息页--表单信息');
 	            } catch (e) {}
 	            this.submitting = true;
-	            Promise.resolve(Api.putAddress(params)).then(function (res) {
-	                if (!res.success) {
-	                    TipManager.show(res.msg);
-	                    return;
-	                }
-	                TipManager.show("提交成功");
-	                _this5.hide();
-	            }).catch(function (err) {
-	                var errMsg = typeof err === 'string' ? err : err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString();
-	                try {
-	                    Raven.captureMessage("<\u63D0\u4EA4\u7259\u818F\u6536\u8D27\u4FE1\u606F>\u5931\u8D25", {
-	                        level: 'error',
-	                        extra: {
-	                            data: errMsg
-	                        }
-	                    });
-	                } catch (e) {}
-	            }).finally(function () {
-	                _this5.submitting = false;
-	            });
+	            TipManager.show("提交成功");
+	            this.hide();
+	            this.submitting = false;
 	        }
 	    }, {
 	        key: "show",
@@ -3559,8 +3530,6 @@
 	    }, {
 	        key: "goToSubmit",
 	        value: function goToSubmit() {
-	            var _this6 = this;
-	
 	            var params = {
 	                data: this.submitData
 	            };
@@ -3573,26 +3542,10 @@
 	                fiboSDK.saveFormInfo(fForm, '同城活动类别选择页面-表单信息');
 	            } catch (e) {}
 	            this.submitting = true;
-	            Promise.resolve(Api.putActive(params)).then(function (res) {
-	                if (!res.success) {
-	                    TipManager.show(res.msg);
-	                    return;
-	                }
-	                TipManager.show("提交成功");
-	                _this6.hide();
-	            }).catch(function (err) {
-	                var errMsg = typeof err === 'string' ? err : err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString();
-	                try {
-	                    Raven.captureMessage("<\u63D0\u4EA4\u540C\u57CE\u6D3B\u52A8\u7C7B\u522B\u4FE1\u606F>\u5931\u8D25", {
-	                        level: 'error',
-	                        extra: {
-	                            data: errMsg
-	                        }
-	                    });
-	                } catch (e) {}
-	            }).finally(function () {
-	                _this6.submitting = false;
-	            });
+	
+	            TipManager.show("提交成功");
+	            this.hide();
+	            this.submitting = false;
 	        }
 	    }, {
 	        key: "show",

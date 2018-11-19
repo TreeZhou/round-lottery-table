@@ -103,27 +103,31 @@ class RuleClass extends BasePopupClass {
             fiboSDK.saveFormInfo(fForm, '提交牙膏收件人信息页--表单信息');
         } catch (e) {}
         this.submitting = true;
-        Promise.resolve(Api.putAddress(params)).then((res) => {
-            if (!res.success) {
-                TipManager.show(res.msg)
-                return;
-            }
-            TipManager.show("提交成功");
-            this.hide();
-        }).catch((err) => {
-            let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
-            try {
-                Raven.captureMessage(`<提交牙膏收货信息>失败`, {
-                    level: 'error',
-                    extra: {
-                        data: errMsg
-                    }
-                });
-            } catch (e) {}
-            // return alert(errMsg);
-        }).finally(() => {
-            this.submitting = false;
-        });
+        TipManager.show("提交成功");
+        this.hide();
+        this.submitting = false;
+
+        // Promise.resolve(Api.putAddress(params)).then((res) => {
+        //     if (!res.success) {
+        //         TipManager.show(res.msg)
+        //         return;
+        //     }
+        //     TipManager.show("提交成功");
+        //     this.hide();
+        // }).catch((err) => {
+        //     let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
+        //     try {
+        //         Raven.captureMessage(`<提交牙膏收货信息>失败`, {
+        //             level: 'error',
+        //             extra: {
+        //                 data: errMsg
+        //             }
+        //         });
+        //     } catch (e) {}
+        //     // return alert(errMsg);
+        // }).finally(() => {
+        //     this.submitting = false;
+        // });
     }
     show() {
         Config.observer.emit("initToothPasteSubmitData");

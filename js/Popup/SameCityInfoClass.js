@@ -118,27 +118,31 @@ class RuleClass extends BasePopupClass {
             fiboSDK.saveFormInfo(fForm, '同城活动类别选择页面-表单信息');
         } catch (e) {}
         this.submitting = true;
-        Promise.resolve(Api.putActive(params)).then((res) => {
-            if (!res.success) {
-                TipManager.show(res.msg)
-                return ;
-            }
-            TipManager.show("提交成功");
-            this.hide();
-        }).catch((err) => {
-            let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
-            try {
-                Raven.captureMessage(`<提交同城活动类别信息>失败`, {
-                    level: 'error',
-                    extra: {
-                        data: errMsg
-                    }
-                });
-            } catch (e) {}
-            // return alert(errMsg);
-        }).finally(() => {
-            this.submitting = false;
-        });
+
+        TipManager.show("提交成功");
+        this.hide();
+        this.submitting = false;
+        // Promise.resolve(Api.putActive(params)).then((res) => {
+        //     if (!res.success) {
+        //         TipManager.show(res.msg)
+        //         return ;
+        //     }
+        //     TipManager.show("提交成功");
+        //     this.hide();
+        // }).catch((err) => {
+        //     let errMsg = typeof err === 'string' ? err : (err.toString() == '[object Object]' ? JSON.stringify(err) : err.toString());
+        //     try {
+        //         Raven.captureMessage(`<提交同城活动类别信息>失败`, {
+        //             level: 'error',
+        //             extra: {
+        //                 data: errMsg
+        //             }
+        //         });
+        //     } catch (e) {}
+        //     // return alert(errMsg);
+        // }).finally(() => {
+        //     this.submitting = false;
+        // });
     }
     show() {
         Config.observer.emit("initSameCityInfoSubmitData");

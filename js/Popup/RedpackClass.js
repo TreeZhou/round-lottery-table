@@ -29,7 +29,7 @@ class RuleClass extends BasePopupClass {
         });
     }
     initDate() {
-        this.$redpackAmount.text(Config.awardData.amount / 100 + "元红包");
+        // this.$redpackAmount.text(Config.awardData.amount / 100 + "元红包");
 
     }
     show() {
